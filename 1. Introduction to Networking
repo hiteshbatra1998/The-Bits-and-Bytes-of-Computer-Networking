@@ -107,4 +107,7 @@ b. Fiber optic cables - Contain individual optical fiber, which are tiny tubes m
 
 - Border Gateway Protocol (BGP) - Routers share data with each other via this protocol, which lets trhem to learn about the most optimal paths to forward traffic;
 
+4. Gateway – A gateway, as the name suggests, is a passage to connect two networks together that may work upon different networking models. 
+	     They basically work as the messenger agents that take data from one system, interpret it, and transfer it to another system. 
+	     Gateways are also called protocol converters and can operate at any network layer. Gateways are generally more complex than switch or router.
 
