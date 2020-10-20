@@ -5,7 +5,7 @@ The Physical Layer
 * Bit - The smallest representation of data that a computer can understand; it's a one or zero;
 - Ones and Zeros are sent across the network through a process called modulation;
 * Modulation - It is a way of varying the voltage of the charges moving across the cable;
-* Line coding - Modulations used for computer networks -  enable devices and both ends of the network to realize the sata of data as a ) or a 1;
+* Line coding - Modulations used for computer networks -  enable devices and both ends of the network to realize the sata of data as a 0 or a 1;
 - Line coding is the modulation of an electrical charge so that each side of a connection knows what is a one and what is a zero.
 
 Twisted Pair Cabling and Duplexing
@@ -35,3 +35,15 @@ Network Ports and Patch Panels
 
 * Patch panel - It is a device containing many network ports; It's just a container for the endpoints of many runs of cable;
 - Additional cables are run from a patch panel to switches or routers to provide network access to the computers at the other end of those links.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+*Devices used - hubs, cables, repeaters.
+
+*Functions of physical layer -
+    1. It defines the physical characteristics and functions of the physical devices and interfaces so that transmission can occur. 
+    2. It lays out the transmission medium and type of signal for transmitting the bits, i.e., electrical pulses, optical pulses or radio signals.
+    3. It defines the procedure of encoding of the bits, for example, how many volts should represent a 0 bit and 1 bit in case of electrical signals.
+    4. It states the data transmission rate, i.e., number of bits transmitted per second; and the duration of a bit, i.e., how long a bit stays.
+    5. It defines the topology, i.e., physical layout, of the network devices.
+    6. It also states the direction of transmission, i.e., whether the transmission is in simplex mode, half-duplex mode or full-duplex mode.
