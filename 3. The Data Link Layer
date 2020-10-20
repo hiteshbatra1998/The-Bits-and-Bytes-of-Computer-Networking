@@ -12,21 +12,30 @@
   * MAC address (Media Access Controll Address)
   --------------------------------------------------
   * A globaly unique identifier attached to an individual network interface;
+  - It is basically the physical address of a computer. ( ifconfig - cmd to know the MAC, linux)
   - It is a 48-bit number normally represented by six grouping of two hexadecimal numbers;
   * Hexadecimal - a way to represent numbers using 16 digits;
   * Octet - In computer networking, any number that can be represented by 8 bits;
   -> A MAC address is split into two -> OUI ( Organizationally Unique Identifier)
-      - OUI ( Organizationally Unique Identifier) - First three octets of a MAC address, these are assigned to individual hardware manufacturers by IEEE;
-      - the last three octets of MAC address can be assigned in any way the manufacturer would want but it must be unique;
+      1. OUI ( Organizationally Unique Identifier) - First three octets of a MAC address, these are assigned to individual hardware manufacturers by IEEE;
+      2. Network Interface Controller(NIC) specific
+         - the last three octets of MAC address can be assigned in any way the manufacturer would want but it must be unique;
+        (The rightmost six digits represents Network Interface Controller, which is assigned by manufacturer.)
     -> Ethernet uses MAC addresses to ensure that data it sends has both an address for the machine that sebt the transmission as well as the one the transmission was intended for;
     
  * Unicast, Multicast, and Broadcast
   -----------------------------------
-  -> Unicast - unicast transmission is meant for one receiving address;
+  -> Unicast - unicast transmission is meant for one receiving address; (LSB - 01001011 ----> = 1, MSB ----> = 0 )
       - Identification - If the least significant bit in the first octete of a destination address is set to zero, it means that ethernet frame is intended for only the destination address.
-  -> Multicast - 
+            (here, it is sent to all, but only intercepted by the intended one)
+            
+  -> Multicast - Multicast address allow the source to send a frame to group of devices.
           Identification - If the least significant bit in the first octete of a destination address is set to one, it means that ethernet frame is a multicast frame.
-  -> Broadcast - intended for all receivers on the LAN. It uses a broadcast address and constitues of all F's. FF:FF:FF:FF:FF:FF;
+          
+  -> Broadcast - Intended for all receivers on the LAN. It uses a broadcast address and constitues of all F's. FF:FF:FF:FF:FF:FF(Destination MAC);
+  
+  -> There is something called Ethernet frame that decided the final dest. and arrival to pacakges -
+     It is composed as  -> |Dest. MAC| + |Source MAC| + |Dest. IP| + |Source IP| + |User data| + |Trailer|
   
   * Dissecting an Ethernet Frame
   -------------------------------
