@@ -28,6 +28,15 @@ the External IP address is that visible to the the internet - the websites, the 
 It looks something like 132.104.54.128. Just google the term My IP from all your tablets and computers connected to same router and you will see the same Public IP address on all of them.
 The thing you should be concerned about is your Public IP, as private IP is only considered in internal networks.
 Even though the Public IP is same for all device on same WiFi, you can bypass it and get a new IP with the help of a VPN.
+
+3.) IPv4 vs IPv6
+            - IPv4 is 32-Bit IP address whereas IPv6 is a 128-Bit IP address.
+            - IPv4 is a numeric addressing method whereas IPv6 is an alphanumeric addressing method.
+            - IPv4 binary bits are separated by a dot(.) whereas IPv6 binary bits are separated by a colon(:).
+            - IPv4 offers 12 header fields whereas IPv6 offers 8 header fields.
+            - IPv4 has checksum fields while IPv6 doesn’t have checksum fields
+            - IPv4 uses ARP (Address Resolution Protocol) to map to MAC address whereas IPv6 uses NDP (Neighbour Discovery Protocol) to map to MAC address.
+            - IPv4 offers five different classes of IP Address from Class A to E whereas lPv6 allows storing an unlimited number of IP Address.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -> Dynamic Host Configuration Protocol (DHCP) - enables to add a new host to the network, or add an IP addressto a host newly added to the network - this is termed as Dynamic IP Address; The other alternative is Static IP Address(Configured on a node manually);
