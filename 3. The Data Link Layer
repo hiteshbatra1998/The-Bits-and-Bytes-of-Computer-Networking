@@ -35,7 +35,6 @@
   -> Broadcast - Intended for all receivers on the LAN. It uses a broadcast address and constitues of all F's. FF:FF:FF:FF:FF:FF(Destination MAC);
   
   -> There is something called Ethernet frame that decided the final dest. and arrival to pacakges -
-     It is composed as  -> |Dest. MAC| + |Source MAC| + |Dest. IP| + |Source IP| + |User data| + |Trailer|
   
   * Dissecting an Ethernet Frame
   -------------------------------
