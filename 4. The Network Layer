@@ -29,7 +29,12 @@ It looks something like 132.104.54.128. Just google the term My IP from all your
 The thing you should be concerned about is your Public IP, as private IP is only considered in internal networks.
 Even though the Public IP is same for all device on same WiFi, you can bypass it and get a new IP with the help of a VPN.
 
-3.) IPv4 vs IPv6
+3.) IP addresses are globally managed by Internet Assigned Numbers Authority(IANA) and regional Internet registries(RIR).
+
+4.) While finding the total number of host IP addresses, 2 IP addresses are not counted and are therefore,
+    decreased from the total count because the first IP address of any network is the network number and whereas the last IP address is reserved for broadcast IP.
+
+5.) IPv4 vs IPv6
             - IPv4 is 32-Bit IP address whereas IPv6 is a 128-Bit IP address.
             - IPv4 is a numeric addressing method whereas IPv6 is an alphanumeric addressing method.
             - IPv4 binary bits are separated by a dot(.) whereas IPv6 binary bits are separated by a colon(:).
@@ -109,7 +114,7 @@ ETHERNET HEADER|                 IP DATAGRAM              | ETHERNET FOOTER | --
 -----------------------------------------------------------------------------
 
 Each layer is needed for the one above it;
-----------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
 * IP Address Classes
 --------------------
 -> Ip addresses can be split into 2 sections - network ID and the host ID; 
@@ -122,6 +127,64 @@ Each layer is needed for the one above it;
   * Class E - Unassigned and used for testing purposes - 240 - 255;
   
 -> This class system has been replaced by CIDR (Classless inter-domain routing);
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Class A -:
+        IP address belonging to class A are assigned to the networks that contain a large number of hosts.
+        
+        The network ID is 8 bits long. The host ID is 24 bits long.
+        The higher order bit of the first octet in class A is always set to 0. The remaining 7 bits in first octet are used to determine network ID. The 24 bits of host ID are used to determine the host in any network. 
+        The default subnet mask for class A is 255.x.x.x. Therefore, class A has a total of:
+
+        -> 2^7-2= 126 Number of network ID (Here 2 address is subracted because 0.0.0.0 and 127.x.y.z are special address. ) ( 2 is always subtracted from hosts, but there exists a special case in network of Class A, therefore, it is subtracted here)
+        -> 2^24 – 2 = 16,777,214 host ID
+        IP addresses belonging to class A ranges from 1.x.x.x – 126.x.x.x
+        
+Class B -:
+        IP address belonging to class B are assigned to the networks that ranges from medium-sized to large-sized networks.
+
+        The network ID is 16 bits long.
+        The host ID is 16 bits long.
+        The higher order bits of the first octet of IP addresses of class B are always set to 10. The remaining 14 bits are used to determine network ID. 
+        The 16 bits of host ID is used to determine the host in any network. The default sub-net mask for class B is 255.255.x.x. Class B has a total of:
+
+        -> 2^14 = 16384 network address
+        -> 2^16 – 2 = 65534 host address
+        IP addresses belonging to class B ranges from 128.0.x.x – 191.255.x.x
+
+Class C -:
+        IP address belonging to class C are assigned to small-sized networks.
+
+        The network ID is 24 bits long.
+        The host ID is 8 bits long.
+        The higher order bits of the first octet of IP addresses of class C are always set to 110. The remaining 21 bits are used to determine network ID. 
+        The 8 bits of host ID is used to determine the host in any network. The default sub-net mask for class C is 255.255.255.x. Class C has a total of:
+
+        -> 2^21 = 2097152 network address
+        -> 2^8 – 2 = 254 host address
+        IP addresses belonging to class C ranges from 192.0.0.x – 223.255.255.x
+        
+Class D -:
+        IP address belonging to class D are reserved for multi-casting. The higher order bits of the first octet of IP addresses belonging to class D are always set to 1110. 
+        The remaining bits are for the address that interested hosts recognize.
+
+        Class D does not posses any sub-net mask. IP addresses belonging to class D ranges from 224.0.0.0 – 239.255.255.255
+        
+Class E -:
+        IP addresses belonging to class E are reserved for experimental and research purposes. IP addresses of class E ranges from 240.0.0.0 – 255.255.255.254. This class doesn’t have any sub-net mask. 
+        The higher order bits of first octet of class E are always set to 1111.
+        
+* 127.0.0.0 – 127.0.0.8 : Loop-back addresses
+* 0.0.0.0 – 0.0.0.8 : used to communicate within the current network.     
+
+-> Within any network, the host ID must be unique to that network.
+-> Host ID in which all bits are set to 0 cannot be assigned because this host ID is used to represent the network ID of the IP address.
+-> Host ID in which all bits are set to 1 cannot be assigned because this host ID is reserved as a broadcast address to send packets to all the hosts present on that particular network.
+
+* Because of wastage of number of ip addresses in Classful addressing, we introduced Classless Inter Domain Routing (CIDR), to solve the issue.
+  CIDR - https://www.youtube.com/watch?v=N-ywmOpWehE&list=PLxCzCOWd7aiGFBD2-2joCpWOLUrDLvVV_&index=36
+  Format - w.x.y.z/n ( n = mask, number of consec 1's ). Things we can figure out - Number of hosts, Subnet mask, Network Id.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 * Address Resolution Protocol (ARP)
 -------------------------------------
