@@ -190,12 +190,32 @@ Class E -:
 -------------------------------------
 -> MAC Addresses are used at the Data-link Layer.
 -> IP addresses are used at the Network Layer.
--> ARP - A protocol used to discover the hardware address of a node with certain IP address;
--> Most network connected devices while retaining local ARP table;
+-> ARP - A protocol used to discover the hardware address of a node with certain IP address in order to communicate;
+-> Most network connected devices retain local ARP table;
 -> ARP table - A list of IP Addresses and the MAC addresses associated with them;
 
 -> The IP datagram once fully formed needs to be encapsulated inside an Ethernet frame, hence the transmitting device needs a destination MAC address to complete the Ethernet frame header;
--> Using the data in the ARP table the destination MAC address is seeked or else the transmitting device sends a broadcast ARP message to the MAC broadcast address which is FF:FF:FF:FF:FF:FF - these are delivered to all computers on a local network and the respective network interface sends a ARP response - that contains the MAC address for the network interface;
+-> Using the data in the ARP table the destination MAC address is seeked or else the transmitting device sends a broadcast ARP message to the MAC broadcast address which is FF:FF:FF:FF:FF:FF 
+   - these are delivered to all computers on a local network and the respective network interface sends a ARP response - that contains the MAC address for the network interface;
 
 -> ARP table entries generally expire after short amount of time to ensure changes in the network are accounted;
------------------------------------------------------------------------------------------------------------------------------------
+
+-> ARP cache : the arp table maintained by the sender in order to have hassle free communication in future. Gets deleted over time.
+-> Check by | arp -a |. 2 types - Dynamic: Changes over time, Static: Manually entered to relate IP to MAC, if communication has to be done frequently.
+
+CASE-1: The sender is a host and wants to send a packet to another host on the same network.
+        Use ARP to find another host’s physical address.
+        
+CASE-2: The sender is a host and wants to send a packet to another host on another network. 
+        Sender looks at its routing table.
+        Find the IP address of the next hop (router) for this destination.
+        Use ARP to find the router’s physical address.
+        
+CASE-3: the sender is a router and received a datagram destined for a host on another network. 
+        Router check its routing table.
+        Find the IP address of the next router.
+        Use ARP to find the next router’s physical address.
+    
+CASE-4: The sender is a router that has received a datagram destined for a host in the same network. 
+        Use ARP to find this host’s physical address.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
