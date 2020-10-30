@@ -1,4 +1,4 @@
-* Subnetting
+* Subnetting -  https://www.youtube.com/watch?v=rdb2ki4iGuo&list=PLxCzCOWd7aiGFBD2-2joCpWOLUrDLvVV_&index=37+
 --------------
 -> The process of taking a large network and splitting it up into many individual and smaller subnetworks or subnets;
 -> Address classes give us a way to break the total global IP space into discrete networks; 
@@ -14,7 +14,7 @@
  * Subnet Masks
 ----------------
 - Network ID's are used to identify networks and Host ID's are used to identify individual hosts;
-- Subnet ID 
+- Subnet ID --------- ( understand through `here - https://www.youtube.com/watch?v=rdb2ki4iGuo&list=PLxCzCOWd7aiGFBD2-2joCpWOLUrDLvVV_&index=37 )
     - An IP address is 32-bit long, without subnetting - certain portion consists of network id and the rest will be host ids;
     - With subnetting - some of the bits that would normally comprise of the host ID are actually used for the subnet ID;
     - IP address - can consist of a network id/ subnet id/host id;
