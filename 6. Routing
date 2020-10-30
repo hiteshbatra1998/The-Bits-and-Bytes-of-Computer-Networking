@@ -7,6 +7,10 @@
   2. Examines rthe destination IP address;
   3. Looks up IP destination network in the routing table;
   4. Forwards traffic to the destination;
+  
+ ****
+ Remember, a router may have multiple ip addresses as it is connected to many interfaces. Remember that, ip addresses belong to a network and not to any specific node 
+ and therefore, router may have ip address = no of interfaces it connects to and not specific one ip. 
  
  -> Example - 2 Networks
  -----------------------------
