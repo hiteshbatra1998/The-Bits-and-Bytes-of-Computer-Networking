@@ -105,7 +105,7 @@ Allows these applications to communicate in a way they can understand;
  
 -----------------------------------------------------------------------------------------------------------------------------------
 * TCP Control Flags and the three-way handshake
--------------------------------------------------
+-----------------------------------------------
 -> TCP as a protocols establishes connections used to send long chains of segments of data.
 -> TCP establishes connections through the use of different TCP control flags used in a very specific order.
 
@@ -113,11 +113,14 @@ Allows these applications to communicate in a way they can understand;
 ------------------------
 1. URG -> Urgent - A value of one here indicates that the segment is considered urgent and that the urgent pointer field has more data about this;
 2. ACK -> Acknowledged - A value of one in this field means that the acknowledgment number field should be examined.
+    It is used to acknowledge packets which are successful received by the host. The flag is set if the acknowledgement number field contains a valid acknowledgement number.
 3. PSH -> push - The transmitting device wants the receiving device to push currently-buffered data to the application on the receiving end as soon as possible.
-(A buffer is a computing technique where a certain amount of data is held somewhere, before being sent elsewhere  -  used to send large chunks of data more efficiently);
+   (A buffer is a computing technique where a certain amount of data is held somewhere, before being sent elsewhere  -  used to send large chunks of data more efficiently);
 4. RST - Reset - One of the sides in a TCP connection has not been able to properly recover from a series of missing or malformed segments;
 5. SYN (synchronize) - It's used when first establishing a TCP connection and makes sure the receiving end knows to examine the sequence number field;
+   This is used for synchronizing sequence number i.e. to tell the other end which sequence number they should except. First packet from both sender's and receiver's end.
 6. FIN (finish) - When this flag is set to one, it means the transmitting computer does not have any more data to send and the connection can be closed.
+   This is the last packet sent by sender. It frees the reserved resources and gracefully terminate the connection.
 
 * Example of how a TCP control flags are used and connections are set:
 ----------------------------------------------------------------------
@@ -151,7 +154,21 @@ Note – Initial sequence numbers are randomly selected while establishing conne
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 * Close the Connection - Four Way Handshake
---------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+4 way handshake:
+Step 1 (FIN From Client) – Suppose that the client application decides it wants to close the connection. (Note that the server could also choose to close the connection). 
+                           This causes the client send a TCP segment with the FIN bit set to 1 to server and to enter the FIN_WAIT_1 state. While in the FIN_WAIT_1 state, the client waits for a TCP segment from the server with an acknowledgment (ACK).
+Step 2 (ACK From Server) – When Server received FIN bit segment from Sender (Client), Server Immediately send acknowledgement (ACK) segment to the Sender (Client).
+
+Step 3 (Client waiting) – While in the FIN_WAIT_1 state, the client waits for a TCP segment from the server with an acknowledgment. When it receives this segment, the client enters the FIN_WAIT_2 state. 
+                          While in the FIN_WAIT_2 state, the client waits for another segment from the server with the FIN bit set to 1.
+                          
+Step 4 (FIN from Server) – Server sends FIN bit segment to the Sender(Client) after some time when Server send the ACK segment (because of some closing process in the Server).
+
+Step 5 (ACK from Client) – When Client receive FIN bit segment from the Server, the client acknowledges the server’s segment and enters the TIME_WAIT state. 
+                           The TIME_WAIT state lets the client resend the final acknowledgment in case the ACK is lost.The time spent by client in the TIME_WAIT state is depend on their implementation, but their typical values are 30 seconds, 1 minute, and 2 minutes. 
+                           After the wait, the connection formally closes and all resources on the client side (including port numbers and buffer data) are released.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 A                                    B
     <---------FIN-------------------
@@ -190,8 +207,50 @@ There are more socket states, TCP protocols is universal but the socket states n
  
 -> Connectionless Protocol - User Datagram Protocol (UDP) - Here you set the destination port and send the packet - useful for messages that are not supper important - example - streaming video -  bandwidth is used for actual data rather than establishing connection overhead;
 
-----------------------------------------------------------------------------------------------------------------------------------------
-* System ports V/s Ephemeral ports
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+UDP  - Though Transmission Control Protocol (TCP) is the dominant transport layer protocol used with most of Internet services; provides assured delivery, reliability and much more but all these services cost us with additional overhead and latency. 
+       Here, UDP comes into picture. For the realtime services like computer gaming, voice or video communication, live conferences; we need UDP. Since high performance is needed, UDP permits packets to be dropped instead of processing delayed packets. 
+* There is no error checking in UDP, so it also save bandwidth. User Datagram Protocol (UDP) is more efficient in terms of both latency and bandwidth. 
+* Unlike TCP, Checksum calculation is not mandatory in UDP. No Error control or flow control is provided by UDP.
+* UDP is used by DNS, DHCP, TFTP, SNMP, RIP, and VoIP.
+* TCP is used by HTTP, HTTPs, FTP, SMTP and Telnet.
+**************************************************
+- TCP is a connection-oriented protocol. Connection-orientation means that the communicating devices should establish a connection before transmitting data and should close the connection after transmitting the data.	
+- UDP is the Datagram oriented protocol. This is because there is no overhead for opening a connection, maintaining a connection, and terminating a connection.  UDP is efficient for broadcast and multicast type of network transmission.
+
+- TCP is reliable as it guarantees delivery of data to the destination router.	
+- The delivery of data to the destination cannot be guaranteed in UDP.
+
+- TCP provides extensive error checking mechanisms. It is because it provides flow control and acknowledgment of data.	
+- UDP has only the basic error checking mechanism using checksums.
+
+- Sequencing of data is a feature of Transmission Control Protocol (TCP). this means that packets arrive in-order at the receiver.	
+- There is no sequencing of data in UDP. If ordering is required, it has to be managed by the application layer.
+
+- TCP is comparatively slower than UDP.	
+- UDP is faster, simpler and more efficient than TCP.
+
+- Retransmission of lost packets is possible in TCP, but not in UDP.	There is no retransmission of lost packets in User Datagram Protocol (UDP).
+
+- TCP has a (20-80) bytes variable length header.	UDP has a 8 bytes fixed length header.
+
+- TCP is heavy-weight.	UDP is lightweight.
+
+- TCP doesn’t supports Broadcasting.	UDP supports Broadcasting.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+*********************************
+  System ports V/s Ephemeral ports
+  
+  * System ports (also known as “well-known ports”) are ports on which applications listen for traffic. For example, by default, http servers listen on tcp port 80, smtp servers listen on tcp port 25, dns servers listen on udp port 53, etc. 
+    Almost all well-known ports are numbered below 1023 (there are exceptions).
+
+  * Ephemeral ports are high numbered ports (>1024) used by client applications as the “source port” when connecting/sending data to a system port, and are used by the server application for the return data.
+
+A network server process must use a “well-known” port number so that potential clients can locate it. The client also needs a port number to create a TCP/IP connection, but this port number need not be well known. 
+Clients are assigned port numbers by the operating system, as part of the sequence of system calls that create a network connection. 
+These port numbers are called “ephemeral” because they are valid only for the life of the connection and have no special significance.
+
 ------------------------------------
 - Transportation layer protocols use the concept of ports and multiplexing and demultiplexing to deliever data to individual service listening on network nodes. These ports are represented by a single 16-bit number (0 - 65535);
 
@@ -208,12 +267,45 @@ The IANA has split the range into independent sections :
 - Ports 49152 - 65535 -  private or ephemeral ports
      Ephemeral ports can’t be registered with the IANA and are generally used for establishing outbound connections.
      All TCP traffic uses a destination port and a source port.
-     When a client wants to communicate with a server, the client will be assigned an ephemeral port to be used for just that one connection, while the server listens on a static system or registered port.
-
-
+     When a client wants to communicate with a server, the client will be assigned an ephemeral port to be used for just that one connection, 
+     while the server listens on a static system or registered port.
 ----------------------------------------------------------------------------------------------------------------------------------------
+
 * Firewalls
----------------
+----------------------------------------------------------------------------------------------------------------------------------
+A firewall is a network security device, either hardware or software-based, which monitors all incoming and outgoing traffic and based on a defined set of 
+security rules it accepts, rejects or drops that specific traffic. Before Firewalls, network security was performed by Access Control Lists (ACLs) residing on routers.
+
+Accept : allow the traffic
+Reject : block the traffic but reply with an “unreachable error”
+Drop : block the traffic with no reply
+
+- A firewall establishes a barrier between secured internal networks and outside untrusted network, such as the Internet.
+- Firewall match the network traffic against the rule set defined in its table. Once the rule is matched, associate action is applied to the network traffic.
+- Firewalls are generally of two types: Host-based and Network-based.
+     Host- based Firewalls : Host-based firewall is installed on each network node which controls each incoming and outgoing packet. 
+                             It is a software application or suite of applications, comes as a part of the operating system.
+                             Host-based firewalls are needed because network firewalls cannot provide protection inside a trusted network. 
+                             Host firewall protects each host from attacks and unauthorized access.
+     Network-based Firewalls : Network firewall function on network level. In other words, these firewalls filter all incoming and outgoing traffic across the network. 
+                               It protects the internal network by filtering the traffic using rules defined on the firewall. 
+                               A Network firewall might have two or more network interface cards (NICs).
+- Firewalls can be categorized based on its generation.
+
+     First Generation - Packet Filtering Firewall :  Packet filtering firewall is used to control network access by monitoring outgoing and incoming packet and allowing them to pass or stop based on source and destination IP address, protocols and ports. 
+                        Packet firewalls treat each packet in isolation. They have no ability to tell whether a packet is part of an existing stream of traffic. Only It can allow or deny the packets based on unique packet headers.
+
+     Second Generation- Stateful Inspection Firewall : Stateful firewalls (performs Stateful Packet Inspection) are able to determine the connection state of packet, unlike Packet filtering firewall, which makes it more efficient.
+
+     Third Generation- Application Layer Firewall : Application layer firewall can inspect and filter the packets on any OSI layer, up to the application layer. 
+                       It has the ability to block specific content, also recognize when certain application and protocols (like HTTP, FTP) are being misused.
+
+     Next Generation Firewalls (NGFW) : Next Generation Firewalls are being deployed these days to stop modern security breaches like advance malware attacks and application-layer attacks.            
+    
+    - Firewalls, both hardware and software, protect computers from hackers and other online threats by blocking dangerous pieces of data from reaching the system. 
+      While hardware firewalls offer network-wide protection from external threats, software firewalls installed on individual computers can more closely inspect data, and can block specific programs from even sending data to the Internet. 
+      On networks with high security concerns, combining both kinds of firewalls provides a more complete safety net.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 - A device that blocks traffic that meets certain criteria;
 - Provide secure network and can operate at lots of different layers of a network;
    - Inspection of application layer traffic;
