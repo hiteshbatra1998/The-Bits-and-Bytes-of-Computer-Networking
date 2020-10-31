@@ -38,6 +38,26 @@ Allows these applications to communicate in a way they can understand;
  - Different network services run while listening on specific ports for incoming request.
  - Example : Traditional port for - HTTP or unencrypted web traffic is port 80; While requesting a webpage from a web server running on a computer listening on IP 10.1.1.100 - the traffic would be directed to port 80 on that computer;
  
+ ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ A port is a number used to uniquely identify a transaction over a network by specifying both the host, and the service.
+ They are necessary to differentiate between many different IP services, such as web service (HTTP), mail service (SMTP), and file transfer (FTP).
+ When clients attempt to connect to your server they need your computer’s IP address, but they also need to indicate which service they want to communicate with, so that the data is sent to the appropriate application.
+ The port number serves to uniquely identify that service on a particular host. The default port number for SMTP is 25, so packets of information relating to email are directed here.
+ Likewise the default for HTTP is 80, which is used to identify packets for transfer to the web server.
+ 
+ Ports - 
+ *20 - File Transfer Protocol (FTP) Data Transfer
+ 22	- Secure Shell (SSH) Secure Login
+ *25	Simple Mail Transfer Protocol (SMTP) E-mail routing
+ *53	- Domain Name System (DNS) service
+ *67(S), 68(C) - 	Dynamic Host Configuration Protocol (DHCP)
+ *80	 -  Hypertext Transfer Protocol (HTTP) used in the World Wide Web
+ 123	- Network Time Protocol (NTP)
+ 143	- Internet Message Access Protocol (IMAP) Management of digital mail
+ 194	- Internet Relay Chat (IRC)
+ *443	- HTTP Secure (HTTPS) HTTP over TLS/SSL
+ ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
  - Ports are denoted by a colon after the IP address -> 10.1.1.100:80 -> Socket Address / Socket number;
  
  - The same device might also be running an FTP (File Transfer Protocol) server - FTP an older method for transfering files from one computer to another but is still in use;
