@@ -7,23 +7,54 @@ D. Transportation Layer - Data is received and sent by proper applications;
 
 * The TCP section has a generic data section, the payload section is the entire content of the data application - web pages from server to browser, video content, word-content a wordprocessor is sending to a printer;
 
-- Multiple protocols operate at the application layer - HTTP, SMTP, etc - they are standardized across application types;
-Most commom servers - Microsoft IIS, Apache, and nginx for web browsers they need to be compatible and communicate over the same protocol;
-For Web traffic - application layer protocol - HTTP;
 
+- At the very top of the OSI Reference Model / TCP/IP model stack of layers, we find Application layer which is implemented by the network applications. 
+  These applications produce the data, which has to be transferred over the network. 
+  This layer also serves as a window for the application services to access the network and for displaying the received information to the user.
+  ex: Application – Browsers, Skype Messenger etc. Application Layer is also called as Desktop Layer.
+
+The functions of the Application layer are :
+- FTAM-File transfer access and management
+- Mail Services
+- Directory Services
+
+- Multiple protocols operate at the application layer - HTTP, SMTP, etc - they are standardized across application types;
+  Most commom servers - Microsoft IIS, Apache, and nginx for web browsers they need to be compatible and communicate over the same protocol;
+  For Web traffic - application layer protocol - HTTP;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+- OSI refers to Open Systems Interconnection. TCP/IP refers to Transmission Control Protocol.
+- OSI model is a generic model that is based upon functionalities of each layer. TCP/IP model is a protocol-oriented standard.
+- OSI model distinguishes the three concepts, namely, services, interfaces, and protocols. TCP/IP does not have a clear distinction between these three.
+- OSI model gives guidelines on how communication needs to be done, while TCP/IP protocols layout standards on which the Internet was developed. 
+  So, TCP/IP is a more practical model.
+- The OSI has seven layers while the TCP/IP has four/five layers.
+- OSI header is 5 bytes. TCP/IP header size is 20 bytes.
+- OSI model, the transport layer, is only connection-oriented whereas the TCP/IP model is both connection-oriented and connectionless.
+- OSI model is developed by ISO (International Standard Organization), whereas TCP Model is developed by ARPANET (Advanced Research Project Agency Network).
+- OSI model helps you to standardize router, switch, motherboard, and other hardware. TCP/IP helps you to establish a connection between different types
+  of computers.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 The Application Layer and the OSI Model
 -----------------------------------------
-OSI - Open System Interconnection model;
-7 layer
+OSI - Open System Interconnection model : https://media.geeksforgeeks.org/wp-content/uploads/computer-network-osi-model-layers.png
+
+7 layer OSI Protocol : 
 -------
 Application
-Presentation      - Responsible for making sure that the unencapsulated application layer data is understood by the application. It handles                     encryption and compression of data;
-Session           - Failitating communication between actual applications and the transport layer, takes the application layer data and                         sends it to the presentation layer;
+Presentation      - In general, it represents the preparation or translation of application format to network format, or from network formatting to application format. 
+                    In other words, the layer “presents” data for the application or the network. 
+                    A good example of this is encryption and decryption of data for secure transmission.
+                    
+Session           - When two devices, computers or servers need to “speak” with one another, a session needs to be created, and this is done at the Session Layer. 
+                    Functions at this layer involve setup, coordination (how long should a system wait for a response, for example) 
+                    and termination between the applications at each end of the session.
 Transportation
 Network
 Data link
 physical
+
 ------------------------------------------------------------------------------------------------------------------------------------------
 All layers working in Unison
 ------------------------------
