@@ -6,12 +6,19 @@
 -> Remembering numbers is a tedious task than words.
 
 -> DNS - Domain Name System - A global and highly distributed network service that resolves strings of letters into IP addresses for you.
-
--> Example for a weather website - IP address - 184.29.131.121 while the Domain name is - www.Weather.com - easier to remember the domain name;
+-> At its most basic, DNS is a directory of names that match with numbers. 
+   The numbers, in this case are IP addresses, which computers use to communicate with each other.
+   
+-> Example for a weather website - IP address - 184.29.131.121 while the Domain name is - www.weather.com - easier to remember the domain name;
 -> The IP address for a domain name can also change all the time - in case of administrative changes, movements of the data centers;
 -> The Domain name - The term we use for something that can be resolved by DNS;
 -> DNS provides geographical data utlilty by enabling clients to gather data from servers that are collated, New Delhi server -> New Delhi, New york -> New York clients; Cause of the global structure DNS lets organizations decide if youre in the region resolve the domain name to this IP.
-
+*******************
+DNS:
+- helps humans by easing out the remembering process, to only remember the domain name (example.com) and not ever changing ip addresses.
+- helps administrative services to change the Domain Name that resolves the IP to a specific domain name.  
+- 
+******************
 * Name Resolution
 -------------------
 -> The many steps of Name Resolution
