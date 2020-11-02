@@ -249,7 +249,42 @@ MSS (maximum segment size) - MTU (maximum transmission unit)
 - TCP MSS is sent inside SYN packet of a receiver during the 3-way-handshake process of establishing TCP connection in a way that the host on the other side can 
   know how much payload he is allowed to put into frames when sending to him in order to avoid fragmentation.
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+******
+Router - Switch
 
+* Switch is a multiport bridge.
+- A Data-link layer device.
+- It inspects the contents of the Ethernet protocol data being sent around the network, determine which system the data is intended for and send it to it; 
+- Eliminates collision domain, but broadcast domain remains same.
 
+1.	Hub is operated on Physical layer. -----  While switch is operated on Data link layer.
+3.	Hub have maximum 4 ports.          -----  While switch can have 24 to 28 ports.
+5.	Hub is a half duplex transmission mode.	-----   While switch is a full duplex transmission mode.
+6.	In hub, Packet filtering is not provided. ----- While in switch, Packet filtering is provided.
+7.	Hub cannot be used as a repeater. 	  ----- While switch can be used as a repeater.
 
+Bridge – A bridge operates at data link layer. A bridge is a repeater, with add on the functionality of filtering content by reading the MAC addresses of source 
+         and destination. It is also used for interconnecting two LANs working on the same protocol. 
+	        It has a single input and single output port, thus making it a 2 port device.
+
+* Hubs and Switches are the primary devices used to connect computers on a single network , usually referred to as LAN (Local Area Network);
+
+3. Routers
+------------
+- Router - A device that knows how to forward data between independent networks;
+- It operates at the 3rd layer - Network Layer;
+- A router detemines the IP address to determine where to send the data;
+- Routers store internal tables containing information about how to route traffic between lots of different networks in the world;
+
+- Border Gateway Protocol (BGP) - Routers share data with each other via this protocol, which lets trhem to learn about the most optimal paths to forward traffic;
+
+1. The main objective of router is to connect various networks simultaneously.	While the main objective of switch is to connect various devices simultaneously.
+2.	Router works in network layer.	While switch works in data link layer.
+3.	Router is used by LAN as well as MAN.	While switch is used by only LAN.
+4.	Through router data is sent in the form of packet.	While through switch data is sent in the form of packet and frame.
+5.	It is a full duplex mode transmission.	It is also a full duplex mode transmission.
+6.	There is less collision take place in router.	While there is no collision take place in half/full duplex switch.
+7.	Router is compatible with NAT.	While it is not compatible with NAT.
+8. Address used for data tramsmission	- Router uses IP address. Switch uses MAC address
