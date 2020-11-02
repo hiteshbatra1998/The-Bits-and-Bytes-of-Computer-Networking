@@ -87,6 +87,7 @@ The functions of the Network layer are :
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 4. Transport Layer (Layer 4) :
+TCP has segments, UDP has datagrams.
 Transport layer provides services to application layer and takes services from network layer. The data in the transport layer is referred to as Segments. 
 It is responsible for the End to End Delivery of the complete message. The transport layer also provides the acknowledgement of the successful data transmission 
 and re-transmits the data if an error is found.
@@ -194,8 +195,59 @@ The functions of the Application layer are :
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ***********
+MSS (maximum segment size) - MTU (maximum transmission unit)
 
+- MSS (maximum segment size) limits the size of packets, or small chunks of data, that travel across a network, such as the Internet. 
+  All data that travels over a network is broken up into packets. Packets have several headers attached to them that contain information about their contents 
+  and destination. MSS measures the non-header portion of a packet, which is called the payload.
 
+- If a data packet is compared to a transport truck, with the header being the truck itself and the payload being the trailer and cargo, then MSS is like 
+  a scale that measures only the trailer. If the trailer weighs too much, then the truck is not allowed to continue to its destination.
+
+- More specifically, MSS is the largest TCP (Transport Control Protocol) segment size that a network-connected device can receive. MSS defines "segment" as 
+  only the length of the payload, not any attached headers. MSS is measured in bytes.
+
+- MSS is determined by another metric that has to do with packet size: MTU, or the maximum transmission unit, which does include the TCP and IP 
+  headers. To continue the analogy, MTU measures the total weight of the truck and its trailer and cargo, instead of just the trailer and cargo.
+
+- Essentially, the MSS is equal to MTU minus the size of a TCP header and an IP header:
+  MTU - (TCP header + IP header) = MSS
+
+- One of the key differences between MTU and MSS is that if a packet exceeds a device's MTU, it is broken up into smaller pieces, or "fragmented." 
+  In contrast, if a packet exceeds the MSS, it is dropped and not delivered.
+
+- Fragmentation is not permitted in IPv6. IPv6 is the latest version of the Internet Protocol, although IPv4 is still widely used. Routers that support IPv6 
+  will drop any IPv6 packets that exceed the MTU, because they cannot be fragmented.
+
+- Fragmentation is also not possible when the "Don't Fragment" flag is activated in a packet's IP header.
+
+- Incase of IPv4, a Internet Control Message Protocol (ICMP) message is sent back to the router along with its MTU limit, for fragmentation, to help prev router
+  to break packages and send again.
+
+- TCP headers are almost always 20 bytes* long. IP headers include information such as the source and destination IP address, and they are also 20 bytes long. 
+  Both TCP and IP packets include optional header fields that can make the headers longer, but these are almost never used.
+
+- Suppose a network router has an MTU of 1,500, meaning it only accepts packets up to 1,500 bytes long. (Longer packets will be fragmented.) 
+  What should the MSS for the router be set to? MTU - (TCP header + IP header) = MSS
+  1,500 - (20 + 20) = 1,460
+
+- The router’s MSS should be set to 1,460 bytes. Packets with a payload size larger than 1,460 bytes will be dropped. 
+  (A device could send an overly large packet like this by mistake if it is not aware of the MTU and MSS settings of the routers in between it and another device.
+  A process called path MTU discovery helps avoid such incidents.)
+
+- MSS is a layer 4, or transport layer, metric. It is used with TCP, a transport layer protocol. However, it is closely related to MTU, which applies to layer 3 
+  (the network layer).
+
+- Occasionally, a router along a network path has an MTU value set lower than the typical 1,500 bytes. This can result in packet loss and can be difficult to 
+  discover. To ensure packets still reach their destination in this situation, one option is to reduce the size of incoming packet payloads. 
+  This can be achieved by configuring the server to apply an MSS clamp: during the TCP handshake, the server can signal the MSS for packets it is willing 
+  to receive, "clamping" the maximum payload size from the other server. 
+
+- Path MTU Discovery (PMTUD) is a standardized technique in computer networking for determining the maximum transmission unit (MTU) size on the network path 
+  between two Internet Protocol (IP) hosts, usually with the goal of avoiding IP fragmentation.
+
+- TCP MSS is sent inside SYN packet of a receiver during the 3-way-handshake process of establishing TCP connection in a way that the host on the other side can 
+  know how much payload he is allowed to put into frames when sending to him in order to avoid fragmentation.
 
 
 
