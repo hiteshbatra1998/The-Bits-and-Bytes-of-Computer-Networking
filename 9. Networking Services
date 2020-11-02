@@ -12,7 +12,8 @@
 -> Example for a weather website - IP address - 184.29.131.121 while the Domain name is - www.weather.com - easier to remember the domain name;
 -> The IP address for a domain name can also change all the time - in case of administrative changes, movements of the data centers;
 -> The Domain name - The term we use for something that can be resolved by DNS;
--> DNS provides geographical data utlilty by enabling clients to gather data from servers that are collated, New Delhi server -> New Delhi, New york -> New York clients; Cause of the global structure DNS lets organizations decide if youre in the region resolve the domain name to this IP.
+-> DNS provides geographical data utlilty by enabling clients to gather data from servers that are collated, New Delhi server -> New Delhi, 
+   New york -> New York clients; Cause of the global structure DNS lets organizations decide if youre in the region resolve the domain name to this IP.
 *******************
 DNS:
 - helps humans by easing out the remembering process, to only remember the domain name (example.com) and not ever changing ip addresses.
@@ -57,14 +58,31 @@ DNS:
  5. The DNS lookup could be redirected at the authoriative server for the respective domain name;
  6. The authoritative server would finally provide the actual IP of the server in question;
  - This IP address is cached for a period of time determined by the pingdom.com nameserver. This value is called the time-to-live (TTL) for that domain record.
-----------------------------------------------------------------------------------------------------------------------------------------
+ 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+   DNS is an application layer protocol. All application layer protocols use one of the two transport layer protocols, UDP and TCP. 
+   TCP is reliable and UDP is not reliable. DNS is supposed to be reliable, but it uses UDP, why?
+ 
+   There are following interesting facts about TCP and UDP on the transport layer that justify the above.
+   1) UDP is much faster. TCP is slow as it requires 3-way handshake. The load on DNS servers is also an important factor. 
+      DNS servers (since they use UDP) don’t have to keep connections.
+   2) DNS requests are generally very small and fit well within UDP segments. Can fit well in a single UDP, unlike multiple packets of TCP case.
+   3) UDP is not reliable, but reliability can added on application layer. An application can use UDP and can be reliable by using a timeout and 
+      resend at the application layer.
+
+Actually, DNS primarily uses the User Datagram Protocol (UDP) on port number 53 to serve requests. DNS queries consist of a single UDP request from the client 
+followed by a single UDP reply from the server. When the length of the answer exceeds 512 bytes and both client and server support EDNS, larger UDP packets are 
+used. Otherwise, the query is sent again using the Transmission Control Protocol (TCP). TCP is also used for tasks such as zone transfers. 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 * DNS and UDP
 ---------------
 -> DNS is an example of an application layer service that uses UDP for the transport layer instead of TCP;
 -> UDP is connectionless - there is no setup or teardown of a connection;
 
 - A single DNS request and its response can fit inside a single UDP datagram - ideal for a connectionless protocol;
-- DNS can generate a lot of traffic, caches of DNS entries are stored on local machines and caching name severs, for the full resolution to be processed all lot of traffic will exist;
+- DNS can generate a lot of traffic, caches of DNS entries are stored on local machines and caching name severs, for the full resolution to be processed 
+  all lot of traffic will exist;
 
 * Full DNS lookup to take place via TCP
 ------------------------------------------
@@ -73,7 +91,8 @@ DNS:
 3. The original host needs to respond with an ACK in order to complete the three-way handshake - connection has been established;
 4. The original host has to send the actual request (IP address for a food accomplice);
 5. The name server would respond with another ACK;
-6. The caching server needs to talk to root name server to find who is responsible for the.com TLD; (3 way handshake) (opened) Four way handshake  (closed connection) --  process requires 11 packets
+6. The caching server needs to talk to root name server to find who is responsible for the.com TLD; (3 way handshake) (opened) Four way handshake  
+   (closed connection) --  process requires 11 packets
 - The recursive server has the correct TLD - top-level domain (.com, .edu. org, etc)name server;
 7. The recursive server needs to repeat the entire process to discover proper authoritative name servers;  -- requires 11 packets
 8. The recursive server repeats the process inorder to get the ip of food.com (TLD);  --- requires 11 packets;
@@ -102,33 +121,43 @@ Total -> 8 packets;
 ------------------------------
 * Resource Record Types
 -----------------------
- - DNA (Domain name system) - operates with a set of defined resource record types - this allow for different types of DNS resolutions to take place.
+ - DNS (Domain name system) - operates with a set of defined resource record types - this allow for different types of DNS resolutions to take place.
+   DNS servers create a DNS record to provide important information about a domain or hostname, particularly its current IP address.
 
 A record
 ---------
+- Also known as a DNS host record, stores a hostname and its corresponding IPv4 address.
 - Most common resource record - A record - It is used to point a certain domain name at a certain IPv4 IP address;
 - A single A record is configured for a single Domain name, but a single domain name can have multiple A records - Allows for a DNS Round Robin technique;
-- DNS round robin - is used to balance traffic across multiple IPs - iterate over a list of items one by one in an orderly fashion - inorder to equally balance each entry on the list thats selected;
-* Example - consider www.microsoft.com - domain name - likely sees a lot of traffic - to balance this traffic across multiple servers - four A records are configured at the authoritative server for microsoft.com domain;
+- DNS round robin - is used to balance traffic across multiple IPs - iterate over a list of items one by one in an orderly fashion - 
+  inorder to equally balance each entry on the list thats selected;
+- Example - consider www.microsoft.com - domain name - likely sees a lot of traffic - to balance this traffic across multiple servers - 
+  four A records are configured at the authoritative server for microsoft.com domain;
 - The IPs - 10.1.1.1, 10.1.1.2, 10.1.1.3, and 10.1.1.4 are used;
-- When DNS resolver performs a look-up of www.microsoft.com - all four IPs will be returned in the order first configured -  10.1.1.1, 10.1.1.2, 10.1.1.3, and 10.1.1.4;
-- The next computer to perform a look-up for www.microsoft.com - all four IPs will be returned in response but in different order -  10.1.1.2, 10.1.1.3, 10.1.1.4,and 10.1.1.1;
+- When DNS resolver performs a look-up of www.microsoft.com - all four IPs will be returned in the order first configured -  
+  10.1.1.1, 10.1.1.2, 10.1.1.3, and 10.1.1.4;
+- The next computer to perform a look-up for www.microsoft.com - all four IPs will be returned in response but in different order -  
+  10.1.1.2, 10.1.1.3, 10.1.1.4,and 10.1.1.1;
 - This cyclic process keeps continuing;
 
 AAAA - Quad A
 --------------
-- Similar to A record but instead of an IPv4 address it returns a IPv4 address;
+- Similar to A record but instead of an IPv4 address it returns a IPv6 address;
 
 CNAME (Canonical Name) record
 --------------------------------
+- can be used to alias a hostname to another hostname. When a DNS client requests a record that contains a CNAME, which points to another hostname, 
+  the DNS resolution process is repeated with the new hostname.
 - It redirects traffic from one domain to another;
-- microft.com -> resolve to www.microsoft.com -> by configuring the CNAME record for microsoft.com that resolves to www.microsoft.com - the resolution client will perform another resolution attempt - www.microsoft.com;
+- microsoft.com -> resolve to www.microsoft.com -> by configuring the CNAME record for microsoft.com that resolves to www.microsoft.com - 
+  the resolution client will perform another resolution attempt - www.microsoft.com;
 - Then use the IP returned by the second attempt;
 - They enable to change the canonical IP address of the server at one place;
 
 Two domain names redirected to the same place - 2 ways
 ------------------------------------------------------
-1. Identical A records can be  setup for both microsoft.com and www.microsoft.com domain names - if the underlying IP address changes - then A records for both the domain names need to be changes;
+1. Identical A records can be  setup for both microsoft.com and www.microsoft.com domain names - if the underlying IP address changes - 
+   then A records for both the domain names need to be changes;
 2. By setting a CNAME that points microsoft.com at www.microsoft.com - then only A records for www.microsoft.com needs to be changed;
   - Clients pointing at the new domain will get the IP address;
 
@@ -139,25 +168,32 @@ MX records - mail exchange
 
 SRV - service record
 ---------------------
-- Used to define the location of various specific services - CalDAV - Calendar and Scheduling service;
+- Similiar to MX, but Used to define the location of many specific services - CalDAV - Calendar and Scheduling service;
 
 TXT record - text
 -----------------
-- Intended for text , additional data intended for other computers to process, used to communicate configuration preferences about the network service that other organizations are entrusted to handle for your domain;
+- Intended for text , additional data intended for other computers to process, used to communicate configuration preferences about the network service that
+  other organizations are entrusted to handle for your domain;
 
-NS and SOA records - define authoritive information about DNS zones;
----------------------------------------------------------------------------------------------------------------------------------------* Anatomy of Domain name
+- NS and SOA records - define authoritive information about DNS zones;
+- Start of Authority (SOA Record)—this record appears at the beginning of a DNS zone file, and indicates the Authoritative Name Server for the current DNS zone, 
+  contact details for the domain administrator, domain serial number, and information on how frequently DNS information for this zone should be refreshed.
+  
+---------------------------------------------------------------------------------------------------------------------------------------
+* Anatomy of Domain name
 ------------------------
-- 3 parts
-www.google.com
-* .com - last part - TLD - Top-level domain name; - handled by ICANN - The Internet Corporation for Assigned Names and Numbers;
-* google - Domains - Used to demarcate where control moves from TLD name server to an authoritative name server; - registered and chossen by any individuals/ companies;
-* www - subdomain / hostname;
+- 3 parts of www.google.com/ en.wikipedia.org - english wikipedia, fr.wikipedia.org - french wiki
+* .com/.org - last part - TLD - Top-level domain name; - handled by ICANN - The Internet Corporation for Assigned Names and Numbers, sister org of IANA.
+   example: google.in - india, google.cn - china.
+* google/wikipedia - Domains - Used to uniquely identify a site, also used to demarcate where control moves from TLD name server to an authoritative name server
+  registered and chossen by any individuals/ companies;
+* www/en - subdomain / hostname;
 
-- All together - fully qualified domain name (FQDN) - 255 characters
-- DNS can technically support 127 levels of domain i total for a single fully qualified domain name -each individual sections can be - 63 characters long;
----------------------------------------------------------------------------------------------------------------------------------------* DNS zones
--------------
+- All of three put together - Fully Qualified Domain Name (FQDN) - 255 characters
+- DNS can technically support 127 levels of domain in total for a single fully qualified domain name - each individual sections can be - 63 characters long;
+---------------------------------------------------------------------------------------------------------------------------------------
+
+* DNS zones
 - They are an hierarchical concept;
 - The root name servers are responsible for the root zones;
 - Each TLD name server is responsible for the zone covering its specific TLD;
@@ -167,9 +203,12 @@ www.google.com
 
 - Allows for easier control over multiple levels of a domain;
 
-- As the number of reource records in a single domain increase its difficult to manage, network administrators can ease their pain by spliting the configurations into multiple zones;
-- Consider - largecompany.com - offices in Tokyo, Bangalore and London - with 200 members each - total of 600 Unique desktop number - 600 A records - configured in a single DNS zone;
-- If it splits up each office into its own zone - ty.largecompany.com, bl.largecompany.com, ln.largecompany.com - as subsomains with their DNS zones and total of four authoritative name servers - largecompany, ty.largecompany.com, bl.largecompany.com, and ln.largecompany.com;
+- As the number of reource records in a single domain increase its difficult to manage, network administrators can ease their pain by spliting the 
+  configurations into multiple zones;
+- Consider - largecompany.com - offices in Tokyo, Bangalore and London - with 200 members each - total of 600 Unique desktop number - 600 A records - 
+  configured in a single DNS zone;
+- If it splits up each office into its own zone - ty.largecompany.com, bl.largecompany.com, ln.largecompany.com - as subsomains with their DNS zones and 
+  total of four authoritative name servers - largecompany, ty.largecompany.com, bl.largecompany.com, and ln.largecompany.com;
 
 - Zones are configured through Zone files - Simple configuration files that declare all resource records for a particular zone;
 - Contains an
