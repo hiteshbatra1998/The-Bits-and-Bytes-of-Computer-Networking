@@ -87,8 +87,20 @@ b. Fiber optic cables - Contain individual optical fiber, which are tiny tubes m
 ----------------------
 * Hub - A physical layer device that allows for connections from many computers at once, it could cause a collision domain;
 - Collison domain - a network segment where only one device can communicate at a time, otherwise electrical signal from other systems will interfere, slows;
+- Hubs cannot filter data, so data packets are sent to all connected devices.  In other words, collision domain of all hosts connected through Hub remains one.  
+  Also, they do not have intelligence to find out best path for data packets which leads to inefficiencies and wastage.
+  
+- Active Hub:- These are the hubs which have their own power supply and can clean, boost and relay the signal along with the network. 
+  It serves both as a repeater as well as wiring centre. 
+- Passive Hub :- These are the hubs which collect wiring from nodes and power supply from active hub. 
+  These hubs relay signals onto the network without cleaning and boosting them.
+- Intelligent Hub :- It work like active hubs and include remote management capabilities.
+  It also enables an administrator to monitor the traffic passing through the hub and to configure each port in the hub.
 
-* Switch - A Data-link layer device - It inspects the contents of the Ethernet protocol data being sent around the network, determine which system the data is intended for and send it to it; Eliminates collision domain;
+* Switch is a multiport bridge.
+- A Data-link layer device.
+- It inspects the contents of the Ethernet protocol data being sent around the network, determine which system the data is intended for and send it to it; 
+- Eliminates collision domain, but broadcast domain remains same.
 
 1.	Hub is operated on Physical layer. -----  While switch is operated on Data link layer.
 3.	Hub have maximum 4 ports.          -----  While switch can have 24 to 28 ports.
@@ -96,14 +108,18 @@ b. Fiber optic cables - Contain individual optical fiber, which are tiny tubes m
 6.	In hub, Packet filtering is not provided. ----- While in switch, Packet filtering is provided.
 7.	Hub cannot be used as a repeater. 	  ----- While switch can be used as a repeater.
 
+Bridge – A bridge operates at data link layer. A bridge is a repeater, with add on the functionality of filtering content by reading the MAC addresses of source 
+         and destination. It is also used for interconnecting two LANs working on the same protocol. 
+	 It has a single input and single output port, thus making it a 2 port device.
+
+* Hubs and Switches are the primary devices used to connect computers on a single network , usually referred to as LAN (Local Area Network);
+
 3. Routers
 ------------
-* Hubs and Switches are the primary devices used to connect computers on a single network , usually referred to as LAN (Local Area Network);
 - Router - A device that knows how to forward data between independent networks;
 - It operates at the 3rd layer - Network Layer;
 - A router detemines the IP address to determine where to send the data;
-- Routers store internal tables containing information about howto route traffic between lots of different networks in the world;
-- Home network , local office netowrks have less sophisticated routers, whereas the one connected to the ISP are called core routers which handle a lot of traffic and functionality;
+- Routers store internal tables containing information about how to route traffic between lots of different networks in the world;
 
 - Border Gateway Protocol (BGP) - Routers share data with each other via this protocol, which lets trhem to learn about the most optimal paths to forward traffic;
 
