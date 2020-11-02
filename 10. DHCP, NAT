@@ -16,17 +16,21 @@
     
 * DHCP ways of operation:
 --------------------------
-1. Dynamic allocation - A range of IP addresses are set aside for client devices and one of these IPs is issued to these devices when they                         request one;  There the IP of a system can be different everytime it connects to the network;
+1. Dynamic allocation - A range of IP addresses are set aside for client devices and one of these IPs is issued to these devices when they 
+   request one;  There the IP of a system can be different everytime it connects to the network;
 
-2. Automatic allocation - A range of IP addresses are set aside for assignmnet purpose; Here the DHCP tracks the assignment numbers                                   assigned to a host device and ensures to assign the same IP to the same machine;
+2. Automatic allocation - A range of IP addresses are set aside for assignmnet purpose; Here the DHCP tracks the assignment numbers 
+   assigned to a host device and ensures to assign the same IP to the same machine;
 
-3. Fixed allocation - Requires a manually specified list of MAC address and their corresponding IPs; MAC address and IP addressing mapping                       and lookup; If the MAC address is not available the DHCP server will fall back to automatic or dynamic allocation;
+3. Fixed allocation - Requires a manually specified list of MAC address and their corresponding IPs; MAC address and IP addressing mapping 
+   and lookup; If the MAC address is not available the DHCP server will fall back to automatic or dynamic allocation; 
+   It can act as a great security measure that only devices that have their MAC addresses configured to DHCP server can be alloted a IP or may be denied, if not.
 
 DHCP - can be used to configured a lot of things - IP Addresses, Gateways, NTP (Network time protocol), subnet networks, etc;
 - NTP - Network time protocols servers - used to keep all the computers on a network synchronized in time;
 
 
-* DHCP in Actions
+* DHCP in Action
 ---------------------
 -> It is an Application layer protocol - relies on the transport, network, data-link and physical layers to operate; 
 -> The DHCP is useful to configure the network layer
@@ -34,23 +38,64 @@ DHCP - can be used to configured a lot of things - IP Addresses, Gateways, NTP (
 -> DHCP discovery - The process by which a client configured to use DHCP attempts to get network configuration information;
 - It has 4 steps:
 
-1. Server discovery step - 
+1. Server Discovery step - 
    The dhcp client sends a DHCP discover message out onto a network;
    The machine doesn't have an ip nor does it know the ip of the DHCP server - a specially crafted broadcast message is formed instead;
-   The  DHCP listens on UDP port 67 and DHCP discovery message is sentfrom UDP port 68.
-   The DHCPDISCOVER message is encapsulated in a UDP datagram - destination port - 67, source port - 68; This is encapsulated inside an IP datagram - destination IP of 255.255.255.255 and source IP of 0.0.0.0;
+   The  DHCP listens on UDP port 67(client) and DHCP discovery message is sent from UDP port 68 (source).
+   The DHCP DISCOVER message is encapsulated in a UDP datagram - destination port - 67, source port - 68; This is encapsulated inside an IP datagram - 
+   destination IP of 255.255.255.255 and source IP of 0.0.0.0;
    This broadcast message will get delievered on every node on the local area network and if a DHCP server is present it would receive the message;
+- This message is 342 or 576 bytes long   
    
-  2. The DHCP server will examine its own configuration and makes a decision on what IP address to offer the client; It checks if it is to run with dynamic, automatic or fixed address allocation;
-  Then a DHCPOFFER message will be sent with a destination messgae of port 68 and source port of 67, destination broadcast ip of - 255.255.255.255 and its actual IP as the source;
-  This message is also a broadcast it will be received by every machine on the network, and the original client would recognize the message was for itself. Since the DHCPOFFER has a field that specifies the MAC address of the client that sent the DHCP message;
+  2. The DHCP server will examine its own configuration and makes a decision on what IP address to offer the client; It checks if it is to run with dynamic, 
+     automatic or fixed address allocation;
+     Then a DHCP OFFER message will be sent with a destination messgae of port 68 and source port of 67, destination broadcast ip of - 255.255.255.255 and its 
+     actual IP as the source;
+     This message is also a broadcast it will be received by every machine on the network, and the original client would recognize the message was for itself. 
+     Since the DHCP OFFER has a field that specifies the MAC address of the client that sent the DHCP message;
+ -  Size of message is 342 bytes. If there are more than one DHCP servers present in the network then client host will accept the first DHCP OFFER message it receives. 
+ -  Also a server ID is specified in the packet in order to identify the server.       
   
-  3. The client machine will then process the DHCPOFFER message to see what IP address is being offered to it. Itwould send a DHCPREQUEST Message. (0.0.0.0 -> 255.255.255.255 - since the IPs are not assigned);
+  3. The client machine will then process the DHCP OFFER message to see what IP address is being offered to it. It would send a DHCP REQUEST Message. 
+     (0.0.0.0 -> 255.255.255.255 - since the IPs are not assigned);
+  -  The client will produce a gratitutous ARP in order to find if there is any other host present in the network with same IP address. 
+     If there is no reply by other host, then there is no host with same TCP configuration in the network and the message is broadcasted to server showing 
+     the acceptance of IP address .A Client ID is also added in this message.
+
+  4. The server responds with a DHCP ACK message; (The DHCP server source ip -> 255.255.255.255:68) - client recognized the message by the MAC address 
+     encapsulated in it;
   
-  4. The server responds with a DHCPACK message; (The DHCP server source ip -> 255.255.255.255:68) - client recognized the message by the MAC address encapsulated in it;
+  5. The client machines networking stack now uses the configuration information  presented to it by the DHCP server to set up its own network layer 
+     configuration; 
+     This configuration - DHCP Lease - as it includes the expiration time. It might last for days or for a short amount of time; 
+     On expiration the DHCP client needs to negotiate a new lease by performing the entire DHCP Discovery process;
+     
+* DHCP negative acknowledgement message –
+  Whenever a DHCP server receives a request for IP address that is invalid according to the scopes that is configured with, it send DHCP Nak message to client.
+  Eg-when the server has no IP address unused or the pool is empty, then this message is sent by the server to client. 
   
-  5. The client machines networking stack now uses the configuration information  presented to it by the DHCP server to set up its own network layer configuration; This configuration - DHCP Lease - as it includes the expiration time. It might last for days or for a short amount of time; On expiration the DHCP client needs to negotiate a new lease by performing the entire DHCP Discovery process;
-  
+* DHCP decline –
+  If DHCP client determines the offered configuration parameters are different or invalid, it sends DHCP decline message to the server.
+  When there is a reply to the gratuitous ARP by any host to the client, the client sends DHCP decline message to the server showing the offered IP address 
+  is already in use.  
+
+* DHCP inform –
+ If a client address has obtained IP address manually then the client uses a DHCP inform to obtain other local configuration parameters, such as domain name. 
+ In reply to the dhcp inform message, DHCP server generates DHCP ack message with local configuration suitable for the client without allocating a new IP address. 
+ This DHCP ack message is unicast to the client.
+ 
+- Note – All the messages can be unicast also by dhcp relay agent if the server is present in different network.
+
+- Advantages – The advantages of using DHCP include:
+
+- centralized management of IP addresses
+- ease of adding new clients to a network
+- reuse of IP addresses reducing the total number of IP addresses that are required
+- simple reconfiguration of the IP address space on the DHCP server without needing to reconfigure each client
+
+- Disadvantages – Disadvantage of using DHCP is:
+
+- IP conflict can occur
 ---------------------------------------------------------------------------------------------------------------------------------
 
 NAT - Network Address Translation
