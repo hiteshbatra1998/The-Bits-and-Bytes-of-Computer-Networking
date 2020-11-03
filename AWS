@@ -280,7 +280,7 @@ Bridge – A bridge operates at data link layer. A bridge is a repeater, with ad
 
 - Border Gateway Protocol (BGP) - Routers share data with each other via this protocol, which lets trhem to learn about the most optimal paths to forward traffic;
 
-1. The main objective of router is to connect various networks simultaneously.	While the main objective of switch is to connect various devices simultaneously.
+1.      The main objective of router is to connect various networks simultaneously. While the main objective of switch is to connect various devices simultaneously.
 2.	Router works in network layer.	While switch works in data link layer.
 3.	Router is used by LAN as well as MAN.	While switch is used by only LAN.
 4.	Through router data is sent in the form of packet.	While through switch data is sent in the form of packet and frame.
@@ -290,7 +290,6 @@ Bridge – A bridge operates at data link layer. A bridge is a repeater, with ad
 8.      Address used for data tramsmission	- Router uses IP address. Switch uses MAC address
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 *********
 Broadcast Domain:
 
@@ -326,3 +325,94 @@ Broadcast Domain –
 - Also, as repeaters and bridges differ from hubs and switches only in terms of the number of ports, a repeater does not break collision and broadcast domains, 
   while a bridge breaks only collision domains.
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+******************
+TCP/UDP
+
+
+- What is TCP?
+- TCP/IP helps you to determine how a specific computer should be connected to the internet and how you can transmit data between them. 
+  TCP/IP stands for Transmission Control Protocol/ Internet Protocol. It is specifically designed as a model to offer highly reliable and end-to-end byte 
+  stream over an unreliable internetwork.
+
+- What is UDP?
+- UDP is a Datagram oriented protocol. It is used for broadcast and multicast type of network transmission. The full form of UDP is User Datagram Protocol 
+  (A datagram is a transfer unit associated with a packet-switched network.) The UDP protocol works almost similar to TCP, but it throws all the error-checking 
+  stuff out, all the back-and-forth communication and deliverability.
+  
+- How TCP work?
+- A TCP connection is established with the help of three-way handshake. It is a process of initiating and acknowledging a connection. Once the connection is 
+  established, data transfer begins, and when the transmission process is finished, the connection is terminated by the closing of an established virtual circuit.
+
+- How UDP work?
+- UDP uses a simple transmission method without implied hand-shaking dialogues for ordering, reliability, or data integrity. UDP also assumes that error checking 
+  and correction is not important or performed in the application, to avoid the overhead of such processing at the network interface level. 
+
+- Features of TCP
+
+	- Delivery Acknowledgements
+	- Re transmission
+	- Easy Error detection
+	/ You can't use for broadcast or multicast transmission.
+	/ TCP offers many features that you don't want. It may waste bandwidth, time, or effort.
+
+- Feature of UDP:
+
+	- Supports bandwidth-intensive applications that tolerate packet loss
+	- Less delay
+	- It sends the bulk quantity of packets.
+ 	/ In UDP protocol, a packet may not be delivered or delivered twice. 
+	/ It may be delivered out of order, so you get no indication
+
+- A short example to understand the differences clearly :
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+- Examples for TCP/UDP: 
+
+- Suppose there are two houses, H1 and H2 and a letter have to be sent from H1 to H2. But there is a river in between those two houses. 
+  Now how can we send the letter?
+/ Solution 1: Make a bridge over the river and then it can it delivered. - TCP.
+/ Solution 2: Get it delivered through a pigeon. - UDP.
+
+- Email: TCP
+/ Reason: suppose if some packet(words/statement) is missing we cannot understand the content.It should be reliable.
+  
+- Stock Updates, Video streaming: UDP
+/ Reason: Suppose if some packet(frame/sequence) is missing we can understand the content.Because video is collection of frames.For 1 second video there should 
+  be 25 frames(image).Even though we can understand some frames are missing due to our imagination skills. Thats why UDP is used for video streaming.
+  
+- TCP is mailing a letter at the post office with return address and postman will make sure to deliver letters in order and in time.
+
+- UDP is just mailing the letter at the post office .
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+- TCP is a connection-oriented protocol. Connection-orientation means that the communicating devices should establish a connection before transmitting data and should close the connection after transmitting the data.	
+- UDP is the Datagram oriented protocol. This is because there is no overhead for opening a connection, maintaining a connection, and terminating a connection.  UDP is efficient for broadcast and multicast type of network transmission.
+
+- TCP is reliable as it guarantees delivery of data to the destination router.	
+- The delivery of data to the destination cannot be guaranteed in UDP.
+
+- TCP provides extensive error checking mechanisms. It is because it provides flow control and acknowledgment of data.	
+- UDP has only the basic error checking mechanism using checksums.
+
+- Sequencing of data is a feature of Transmission Control Protocol (TCP). this means that packets arrive in-order at the receiver.	
+- There is no sequencing of data in UDP. If ordering is required, it has to be managed by the application layer.
+
+- UDP is used by DNS, DHCP, (Trivial File Transfer Protocol) TFTP, and VoIP, Online multiplayer games.
+- TCP is used by HTTP, HTTPs, FTP, SMTP and Telnet.
+
+- TCP is comparatively slower than UDP.	
+- UDP is faster, simpler and more efficient than TCP.
+
+- Retransmission of lost packets is possible in TCP, but not in UDP.	
+- There is no retransmission of lost packets in User Datagram Protocol (UDP).
+
+- TCP has a (20-80) bytes variable length header.	
+- UDP has a 8 bytes fixed length header.
+
+- TCP is heavy-weight.	
+- UDP is lightweight.
+
+- TCP doesn’t supports Broadcasting.	
+- UDP supports Broadcasting.
