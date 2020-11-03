@@ -547,7 +547,10 @@ Error Correction: https://www.tutorialspoint.com/error-control-in-data-link-laye
 5.	In Go-Back-N Protocol, if Receiver receives a corrupt packet, then also, the entire window is re-transmitted.	
 	In selective Repeat protocol, if Receives receives a corrupt packet, it immediately sends a negative acknowledgement and 
 	hence only the selective packet is retransmitted.
-	
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+******
+- What happens when you click on amazon.com?
+- https://medium.com/@maneesha.wijesinghe1/what-happens-when-you-type-an-url-in-the-browser-and-press-enter-bb0aa2449c1a
 
 
 
