@@ -552,10 +552,24 @@ Error Correction: https://www.tutorialspoint.com/error-control-in-data-link-laye
 - What happens when you click on amazon.com?
 - https://medium.com/@maneesha.wijesinghe1/what-happens-when-you-type-an-url-in-the-browser-and-press-enter-bb0aa2449c1a
 
-
-
-
-
+Steps:
+1. You type maps.google.com into the address bar of your browser.
+2. The browser checks the cache for a DNS record to find the corresponding IP address of maps.google.com.
+	To find the DNS record, the browser checks four caches.
+	● First, it checks the browser cache. The browser maintains a repository of DNS records for a fixed duration for websites you have previously visited. 
+	  So, it is the first place to run a DNS query.
+	● Second, the browser checks the OS cache. If it is not in the browser cache, the browser will make a system call (i.e., gethostname on Windows) to your 
+	  underlying computer OS to fetch the record since the OS also maintains a cache of DNS records.
+	● Third, it checks the router cache. If it’s not on your computer, the browser will communicate with the router that maintains its’ own cache of DNS 
+	  records.
+	● Fourth, it checks the ISP cache. If all steps fail, the browser will move on to the ISP. Your ISP maintains its’ own DNS server, which includes a 
+	  cache of DNS records, which the browser would check with the last hope of finding your requested URL.
+3. If the requested URL is not in the cache, ISP’s DNS server initiates a DNS query to find the IP address of the server that hosts maps.google.com.
+4. The browser initiates a TCP connection with the server.
+5. The browser sends an HTTP request to the webserver.
+6. The server handles the request and sends back a response.
+7. The server sends out an HTTP response.
+8. The browser displays the HTML content (for HTML responses, which is the most common).
 
 
 
