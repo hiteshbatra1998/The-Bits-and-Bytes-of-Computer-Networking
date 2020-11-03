@@ -571,6 +571,39 @@ Steps:
 7. The server sends out an HTTP response.
 8. The browser displays the HTML content (for HTML responses, which is the most common).
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+******
+SSL handshake:
+- SSL stands for Secure Sockets Layer. It’s a protocol used to encrypt and authenticate the data sent between an application (like your browser) and a web server.
+  This leads to a more secure web for both you and the visitors to your website. SSL is closely tied to another acronym – TLS. TLS, short for Transport Layer 
+  Security, is the successor and more up-to-date version of the original SSL protocol.
+
+- HTTP and its successor HTTP/2 are both application protocols that underpin how information is transferred around the Internet. They’re essentially the 
+  foundation for data communication on the Internet. When you add back the S, it simply becomes Hypertext Transfer Protocol Secure 
+  (or HTTP over TLS or HTTP over SSL).
+
+- In order to provide a high degree of privacy, SSL encrypts data that is transmitted across the web. This means that anyone who tries to intercept this data 
+  will only see a garbled mix of characters that is nearly impossible to decrypt.
+- SSL initiates an authentication process called a handshake between two communicating devices to ensure that both devices are really who they claim to be.
+- SSL also digitally signs data in order to provide data integrity, verifying that the data is not tampered with before reaching its intended recipient.
+
+- One of the most important pieces of information in an SSL certificate is the website's public key. The public key makes encryption possible. 
+  A user's device views the public key and uses it to establish secure encryption keys with the web server. Meanwhile the web server also has a private key that 
+  is kept secret; the private key decrypts data encrypted with the public key.
+
+- Works in Presentation layer in OSI and in App layer in TCP/IP.
+- HTTPS (Hyper Text Transfer Protocol Secure) appears in the URL when a website is secured by an SSL certificate. The details of the certificate, including the 
+  issuing authority and the corporate name of the website owner, can be viewed by clicking on the lock symbol on the browser bar.
+
+1. With a TLS enabled service, a sender sends a ClientHello (as referred in protocol). This includes information SSL/TLS version, cryptographic algo, 
+   data compression algo it supports.
+2. Then server responds with ServerHello message (selecting highest version of TLS supported by Client). The server also transmits its Digital certificate, 
+   Session ID, Server's digital certi, Server's public key and a final ServerHelloDone message.  
+3. Client validates certificate. Client then sends ClientKeyExchange message. 
+4. Client also needs to send Shared secret key (secret key is encrypted with server's public key) indicating that it is switching to secure communication now.
+5. It is then followed by Finished message by client encrypted with the shared secret key for indicating a successful handshake.
+6. It is then finally followed by Finished message from server encrypted with the shared secret key for indicating a successful handshake from its end.
+   
 
 
 
