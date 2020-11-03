@@ -387,8 +387,10 @@ TCP/UDP
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-- TCP is a connection-oriented protocol. Connection-orientation means that the communicating devices should establish a connection before transmitting data and should close the connection after transmitting the data.	
-- UDP is the Datagram oriented protocol. This is because there is no overhead for opening a connection, maintaining a connection, and terminating a connection.  UDP is efficient for broadcast and multicast type of network transmission.
+- TCP is a connection-oriented protocol. Connection-orientation means that the communicating devices should establish a connection before transmitting data 
+  and should close the connection after transmitting the data.	
+- UDP is the Datagram oriented protocol. This is because there is no overhead for opening a connection, maintaining a connection, and terminating a connection. 
+  UDP is efficient for broadcast and multicast type of network transmission.
 
 - TCP is reliable as it guarantees delivery of data to the destination router.	
 - The delivery of data to the destination cannot be guaranteed in UDP.
@@ -416,3 +418,143 @@ TCP/UDP
 
 - TCP doesn’t supports Broadcasting.	
 - UDP supports Broadcasting.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+******
+Flow Control: Flow control coordinates that amount of data that can be sent before receiving an acknowledgement.
+
+- It is one of the most important duties of the data link layer.
+- Flow control tells the sender how much data to send.
+- It makes the sender wait for some sort of an acknowledgement (ACK) before continuing to send more data.
+- Flow Control Techniques: Stop-and-wait, and Sliding Window
+
+- Feedback based Flow Control In these protocols, the sender sends frames after it has received acknowledgments from the user. This is used in the network layer.
+- Rate based Flow Control These protocols have built in mechanisms to restrict the rate of transmission of data without requiring acknowledgment from the receiver. 
+  This is used in the network layer and the transport layer.
+
+1.) Stop and Wait Flow control:
+- The sender has to wait for an acknowledgment of every frame that it sends.
+- Only when a acknowledgment has been received is the next frame sent. This process continues until the sender transmits an End of Transmission (EOT) frame.
+- In Stop-and-Wait flow control, the receiver indicates its readiness to receive data for each frame.
+- For every frame that is sent, there needs to be an acknowledgment, which takes a similar amount of propagation time to get back to the sender.
+- Only one frame can be in transmission at a time. This leads to inefficiency if propagation delay is much longer than the transmission delay
+- Features of Stop and Wait:
+  - It's simple and each frame is checked and acknowledged well.
+  / Only one frame can be in transmission at a time.
+  / It is inefficient, if the distance between devices is long. Reason is propagation delay is much longer than the transmission delay.
+  / The time spent for waiting acknowledgements between each frame can add significant amount to the total transmission time.
+
+2.) Sliding Window
+- This protocol improves the efficiency of stop and wait protocol by allowing multiple frames to be transmitted before receiving an acknowledgment.
+- Both the sender and the receiver has finite sized buffers called windows. The sender and the receiver agrees upon the number of frames to be sent based upon 
+  the buffer size.
+- The sender sends multiple frames in a sequence, without waiting for acknowledgment. When its sending window is filled, it waits for acknowledgment. 
+  On receiving acknowledgment, it advances the window and transmits the next frames, according to the number of acknowledgments received.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+******
+Error Control:
+- Error control in data link layer is the process of detecting and correcting data frames that have been corrupted or lost during transmission.
+- In case of lost or corrupted frames, the receiver does not receive the correct data-frame and sender is ignorant about the loss. Data link layer follows a 
+  technique to detect transit errors and take necessary actions, which is retransmission of frames whenever error is detected or frame is lost. 
+  The process is called Automatic Repeat Request (ARQ).
+
+- Phases in Error Control
+
+1. Detection of Error − Transmission error, if any, is detected by either the sender or the receiver.
+
+2. Acknowledgment − acknowledgment may be positive or negative.
+
+- Positive ACK − On receiving a correct frame, the receiver sends a positive acknowledge.
+
+- Negative ACK − On receiving a damaged frame or a duplicate frame, the receiver sends a negative acknowledgment back to the sender.
+
+3. Retransmission − The sender maintains a clock and sets a timeout period. If an acknowledgment of a data-frame previously transmitted does not arrive 
+   before the timeout, or a negative acknowledgment is received, the sender retransmits the frame.
+
+
+- Basic approach used for error detection - https://www.geeksforgeeks.org/error-detection-in-computer-networks/
+  1. Simple Parity check
+  2. Checksum
+  3. Cyclic redundancy check
+
+1. Simple Parity check
+-  Blocks of data from the source are subjected to a check bit or parity bit generator form, where a parity of :
+
+- 1 is added to the block if it contains odd number of 1’s, and
+- 0 is added if it contains even number of 1’s
+- This scheme makes the total number of 1’s even, that is why it is called even parity checking. If even ones are found, then okay, else not.
+
+2. Checksum
+
+- In checksum error detection scheme, the data is divided into k segments each of m bits.
+- In the sender’s end the segments are added using 1’s complement arithmetic to get the sum. The sum is complemented to get the checksum.
+- The checksum segment is sent along with the data segments.
+- At the receiver’s end, all received segments are added using 1’s complement arithmetic to get the sum. 
+- The sum is added with the checksum using 1s complement, then complemented.
+- If the result is zero, the received data is accepted; otherwise discarded.
+/ If noise modify the data in such a way that vertically placed bits can cancel the change made to them then calculated checksum will always be same as received 
+  checksum. Such errors cannot be detected and they are known as vertical errors.
+
+3. Cyclic redundancy check (CRC)
+
+- Unlike checksum scheme, which is based on addition, CRC is based on binary division.
+- In CRC, a sequence of redundant bits, called cyclic redundancy check bits, are appended to the end of data unit so that the resulting data unit becomes 
+  exactly divisible by a second, predetermined binary number.
+- At the destination, the incoming data unit is divided by the same number. If at this step there is no remainder, the data unit is assumed to be correct 
+  and is therefore accepted.
+- A remainder indicates that the data unit has been damaged in transit and therefore must be rejected.
+
+******
+Error Correction: https://www.tutorialspoint.com/error-control-in-data-link-layer
+1. Stop and Wait ARQ
+2. Go-Back-N ARQ
+3. Selective Repeat ARQ
+
+1. Stop and Wait ARQ
+- A timeout counter is maintained by the sender, which is started when a frame is sent.
+- If the sender receives acknowledgment of the sent frame within time, the sender is confirmed about successful delivery of the frame. It then transmits the next
+  frame in queue.
+- If the sender does not receive the acknowledgment within time, the sender assumes that either the frame or its acknowledgment is lost in transit. 
+  It then retransmits the frame.
+- If the sender receives a negative acknowledgment, the sender retransmits the frame.
+
+2. Go-Back-N ARQ
+- The sender has buffers called sending window.
+- The sender sends multiple frames based upon the sending-window size, without receiving the acknowledgment of the previous ones.
+- The receiver receives frames one by one. It keeps track of incoming frame’s sequence number and sends the corresponding acknowledgment frames.
+- After the sender has sent all the frames in window, it checks up to what sequence number it has received positive acknowledgment.
+- If the sender has received positive acknowledgment for all the frames, it sends next set of frames.
+- If sender receives NACK or has not receive any ACK for a particular frame, it retransmits all the frames after which it does not receive any positive ACK.
+
+3. Selective Repeat ARQ
+
+- Both the sender and the receiver have buffers called sending window and receiving window respectively.
+- The sender sends multiple frames based upon the sending-window size, without receiving the acknowledgment of the previous ones.
+- The receiver also receives multiple frames within the receiving window size.
+- The receiver keeps track of incoming frame’s sequence numbers, buffers the frames in memory.
+- It sends ACK for all successfully received frames and sends NACK for only frames which are missing or damaged.
+- The sender in this case, sends only packet for which NACK is received.
+	
+1.	In Go-Back-N Protocol, if the sent frame are find suspected then all the frames are re-transmitted from the lost packet to the last packet transmitted.	
+   	In selective Repeat protocol, only those frames are re-transmitted which are found suspected.
+2.	Sender window size of Go-Back-N Protocol is N.	
+	Sender window size of selective Repeat protocol is also N.
+3.	Receiver window size of Go-Back-N Protocol is 1.	
+	Receiver window size of selective Repeat protocol is N.
+4.	In Go-Back-N Protocol, type of Acknowledgement is cumulative.	
+	In selective Repeat protocol, type of Acknowledgement is individual.
+5.	In Go-Back-N Protocol, if Receiver receives a corrupt packet, then also, the entire window is re-transmitted.	
+	In selective Repeat protocol, if Receives receives a corrupt packet, it immediately sends a negative acknowledgement and 
+	hence only the selective packet is retransmitted.
+	
+
+
+
+
+
+
+
+
+
+
