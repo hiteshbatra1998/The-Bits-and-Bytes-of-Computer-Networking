@@ -256,6 +256,58 @@ Memory Management:
                   NTP server, you cannot change it.
 - timedatectl set-time 'yyyy-mm-dd hh:mm:ss' to change hw-sw time.
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+********** 
+User and Group Management:
+- There are three types of accounts on a Unix system −
+
+1. Root account
+   This is also called superuser and would have complete and unfettered control of the system. A superuser can run any commands without any restriction. 
+   This user should be assumed as a system administrator.
+
+2. System accounts
+   System accounts are those needed for the operation of system-specific components for example mail accounts. These accounts are usually 
+   needed for some specific function on your system, and any modifications to them could adversely affect the system.
+
+3. User accounts
+   User accounts provide interactive access to the system for users and groups of users. General users are typically assigned to these accounts and usually have 
+   limited access to critical system files and directories.
+
+- There are four main user administration files −
+
+- cat /etc/passwd − Keeps the user account and password information. This file holds the majority of information about accounts on the Unix system.
+
+- /etc/shadow − Holds the encrypted password of the corresponding account. Not all the systems support this file.
+
+- /etc/group − This file contains the group information for each account.
+
+- /etc/gshadow − This file contains secure group account information.
+
+- https://www.tutorialspoint.com/unix/unix-user-administration.htm
+
+- After installation of the operating system, the ID 0 is assigned to the root user and the IDs 1 to 999 (both inclusive) are assigned to the system users 
+  and hence the ids for local user begins from 1000 onwards. In a single directory, we can create 60,000 users.
+  
+- cat /etc/passwd - gives users list. format - [username]:[x]:[UID]:[GID]:[Comment]:[Home directory]:[Default shell]
+- id username - gives id of a particular username
+- sudo useradd username - add new user
+- passwd username - assign new password to user
+- sudo usermod -g/-d - Modify the group ID of a user/command to change the home directory
+- userdel -r username - delete a user name
+
+- There are 2 categories of groups in the Linux operating system i.e. Primary and Secondary groups. The Primary Group is a group that is automatically generated 
+  while creating a user with a unique user ID simultaneously a group with ID same as the user ID is created and the user gets added to the group and becomes the 
+  first and only member of the group. This group is called the primary group. The secondary group is a group that can be created separately with the help of 
+  commands and we can then add users to it by changing the group ID of users.
+
+- groupadd group_name -  Command to Make a group (Secondary Group)
+- gpasswd group_name -  Command to Set the Password for the Group
+- usermod -G group_name  username -  Command to Add a User to an Existing Group
+- usermod -aG group_name username -  Command to Add User to Group Without Removing From Existing Groups
+- gpasswd -d username1 group_name - Command to Delete a User From a Group
+- groupdel group_name - del grp
+- groupmod -n new_modified_group_name old_group_name - change name
+
 
 
 
