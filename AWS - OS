@@ -308,8 +308,82 @@ User and Group Management:
 - groupdel group_name - del grp
 - groupmod -n new_modified_group_name old_group_name - change name
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+********** 
+32 - 64 bit Linux:
 
+- uname (short for unix name) is a computer program in Unix and Unix-like computer operating systems that prints the name, version and other details about the 
+  current machine and the operating system running on it. uname : linux, uname -m : linux_32/64, unmae -a : every info.
+- lscpu - for indepth info about linux.   
 
+1. It depends on the processor
+   There are 2 major types of processors available, 32-bit and 64-bit processors. A 64-bit processor can run both 32 and 64-bit operating systems, however, 
+   a 32-bit processor can only run 32-bit operating systems. 64 bit is backwards compatible.
+2. The difference is that a 32-bit system can process 32 bits in one cycle, similar a 64-bit system can process 64 bits in one cycle.   
+3. The major difference is that in a 32-bit system you will be able to use only 2^32 bytes of RAM which is around 4GB. Similarly, for 64-bit systems, you can use 
+   up-to 16 Exa-Bytes of RAM. Though physical restrictions are there. 
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+********** 
+GRUB:
+- GNU GRUB (short for GNU Grand Unified Bootloader, commonly referred to as GRUB) is a boot loader package from the GNU Project. GRUB is the one which provides a 
+  user the choice to boot one of multiple operating systems installed on a computer or select a specific kernel configuration available on a particular operating 
+  system's partitions.
+- GRUB is often used as a OS picker on startup for dual-boot computers, for instance, where one system is Linux and the other Windows.
+- 3 interfaces - 
+  Menu Interface : The GRUB is configured by the installation program in the menu interface. It is the default interface available.
+  Menu Entry Editor Interface
+  Command Line Interface
+- The booting options such as kernel parameters can be modified using the GRUB command line.
+- So, in simple terms GRUB just loads and executes Kernel and initrd images.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**********
+File Permissions:
+
+- In Linux, most of the operations are performed on files. And to handle these files Linux has directories also known as folders which are maintained in a 
+  tree-like structure.
+  1. Regular Files: It is the common file type in Linux. it includes files like – text files, images, binary files, etc. Such files can be created using the 
+                    touch command. They consist of the majority of files in the Linux/UNIX system. The regular file contains ASCII or Human Readable text.
+  2. Directories:   These are the files that store the list of file names and the related information. The root directory(/) is the base of the system, /home/ is the default location for user’s home directories, 
+                    /bin for Essential User Binaries, /boot – Static Boot Files, etc. We could create new directories with mkdir command.
+  3. Special Files: Represents a real physical device such as a printer which is used for IO operations. Device or special files are used for device 
+                    Input/Output(I/O) on UNIX and Linux systems. You can see them in a file system like an ordinary directory or file.
+                    
+- There are 2 ways to use the command -
+  Absolute mode (numerical), Symbolic mode (rw-r-xrw-)                    
+- ls -l : to get all the file details
+- Final default directory permission: 755
+- Final default file permission: 644
+- chmod ugoa +-= rwx file_name
+- chmod u=r,g=wx,o=rx [file_name] ======= chmod 435 [file_name]
+
+Changing ownership
+- -c: Reports when a file change is made. ----------- chown -c master file1.txt, it tells via a msg that ownership has changed
+- Change the owner of file.
+$ chown user1 sample.txt
+- Change the group of file.
+$ chown :mygroup file.txt
+- Change both the owner and group of file in single command.
+$ chown user1:mygroup file.txt
+
+- chgrp command in Linux is used to change the group ownership of a file or directory. All files in Linux belong to an owner and a group. You can set the owner 
+  by using “chown” command, and the group by the “chgrp” command. ex - sudo chgrp geeksforgeeks abc.txt
+- sudo chgrp -R --reference=abc.txt GFG --- change dir name of GFG as of abc.txt
+
+- Set-user-ID (SUID)
+  In Linux by default when a user executes a file, The file gets executed with the privileges of the user who executes it. If we set SUID(set-user-ID) bit on the
+  executable this behavior can be changed, then the file will always run with privileges of the owner of the file, no matter who runs the executable.
+  You can set SUID bit by passing u + s to the chmod command.
+  Alternatively, you can use octal notional by prefixing “4” to the octal string. (like 4724 instead of 724).
+
+- Set-group-ID bit on a file: Set-group-ID (SGID) is similar to SUID except that, an executable with SGID bit set runs with the privileges of the group 
+  which owns of the file.
+  You can set SGID bit by passing g + s to the chmod command:
+  Alternatively, you can use octal notional by prefixing “2” to the octal string. (like 2755 instead of 755).
+
+- If the sticky bit on a directory is set, subdirectories/Files under that directory can only be deleted by either owner of the file, owner of the directory, 
+  or the root user. chmod 1777 abc.txt ----1 for sticky bit
 
 
 
