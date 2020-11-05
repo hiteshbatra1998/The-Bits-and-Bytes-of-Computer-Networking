@@ -385,6 +385,96 @@ $ chown user1:mygroup file.txt
 - If the sticky bit on a directory is set, subdirectories/Files under that directory can only be deleted by either owner of the file, owner of the directory, 
   or the root user. chmod 1777 abc.txt ----1 for sticky bit
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**********
+managing s/w, ssh
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**********
+System Services :
+
+- A service is a program that runs in the background outside the interactive control of system users as they lack an interface. This in order to provide even
+  more security, because some of these services are crucial for the operation of the operating system.
+- On the other hand, in systems like Unix or Linux, the services are also known as daemons. Sometimes the name of these services or daemons ends with the letter 
+  d. For example, sshd is the name of the service that handles SSH.
+  
+- Linux supports different ways to manage (start, stop, restart, enable auto-start at system boot, etc.) services, typically through a process or service manager.
+  Most if not all modern Linux distributions now use the same process manager: systemd.
+
+- systemctl : When you run the systemctl command without any arguments, it will display a list of all loaded systemd units (read the systemd documentation 
+              for more information about systemd units) including services, showing their status (whether active or not).
+- Print active services in human-readable form.
+  systemctl list-units -t service
+
+- Services status 
+  Enabled services are currently running. They usually have no problems.
+  Disabled services are not active but can be activated at any time without a problem.
+  Masked services won’t run unless we take that property away from them.
+  Static services will only be used in case another service or unit needs it.
+
+- systemctl start name.service
+- systemctl stop name.service
+- systemctl restart name.service
+- systemctl reload name.service
+- systemctl status name.service
+
+- Use the systemctl enable command to have systemd automatically start a service (or other type of unit) at bootup. The systemctl disable command disables a 
+  services and stops it from starting automatically with your computer.
+  systemctl enable name.service
+  systemctl disable name.service
+
+- You can “mask” a service or other unit to prevent it from starting up at all. You’ll need to unmask it before it can start in the future:
+  systemctl mask name.service
+  systemctl unmask name.service
+
+- It is possible to verify which port is being used by a service. 
+  sudo netstat -plnt
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**********
+Background Process management :
+
+- An instance of a program is called a Process. In simple terms, any command that you give to your Linux machine starts a new process.
+- Types of Processes:
+1. Foreground Processes: They run on the screen and need input from the user. For example Office Programs
+2. Background Processes: They run in the background and usually do not need user input. For example Antivirus.
+
+- If you start a foreground program/process from the terminal, then you cannot work on the terminal, till the program is up and running.
+  Particular, data-intensive tasks take lots of processing power and may even take hours to complete. You do not want your terminal to be held up for such a 
+  long time. To avoid such a situation, you can run the program and send it to the background so that terminal remains available to you.
+
+- Run a process by just typing its name, stop it by ctrl+Z.
+- You can use the command "fg" to continue a program which was stopped and bring it to the foreground. 
+- You can use the command "bg" to continue a program which was stopped and send it to background.
+- Top
+  This utility tells the user about all the running processes on the Linux machine.
+
+- ps : currently running process
+- top is mostly used interactively, Resource Monitoring like top resources using cpu, memory usage and more.
+- ps aux : non-interactive,could be used to see which processes you (or any other user) are running currently. which gives you a single snapshot.
+
+- Kill - This command terminates running processes on a Linux machine.
+  kill PID
+- To find the PID of a process simply type
+  pidof Process name
+
+- You can tell your machine to prioritize processes as per your requirements.
+  nice -n 'Nice value' process name
+
+- DF : This utility reports the free disk space(Hard Disk) on all the file systems.
+- free : Gives free RAM on your system
+- How do I list only running processes on Linux - ps r
+
+
+
+
+
+
+
+
+
+
+
 
 
 
