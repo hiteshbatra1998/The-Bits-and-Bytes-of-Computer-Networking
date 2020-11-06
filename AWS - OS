@@ -150,6 +150,8 @@ Memory Management:
 
 - Segmentation is another non-contiguous memory allocation scheme like paging. Like paging, in segmentation, process isn’t divided into mounted(fixed) size pages. 
   It is variable size partitioning theme. like paging, in segmentation, secondary and main memory are not divided into partitions of equal size. 
+  Each part is didvided into segments which can be allocate to a process.
+  Ex of area, cost ....
 - https://www.geeksforgeeks.org/segmentation-in-operating-system/
 - There is no simple relationship between logical addresses and physical addresses in segmentation. A table stores the information about all such segments 
   and is called Segment Table.
