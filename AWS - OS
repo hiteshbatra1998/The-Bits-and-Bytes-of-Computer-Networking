@@ -527,3 +527,42 @@ Network Protocols :
 - In HTTP, Encryption is absent and Encryption is present in HTTPS as discussed above
 - HTTP does not require any certificates and HTTPS needs SSL Certificates
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**********
+System Automation :
+
+- A system of instructions that carry out a repeated set of processes to replace manual work done to IT systems. Automation is the use of technology to 
+  perform tasks with reduced human assistance.
+
+- Automation reduces mistakes in routine tasks.
+- Automation allows everyone on the team to be productive.
+
+- A cron job is a Linux command used for scheduling tasks to be executed sometime in the future. This is normally used to schedule a job that is executed 
+  periodically – for example, to send out a notice every morning. 
+- For most cron jobs, there are three components present:
+    The script that is to be called or executed.
+    The command that executes the script on a reoccurring basis. This is typically set in cPanel.
+    The action or output of the script, which depends on what the script being called does. Frequently, scripts called as cron jobs modify files or databases.
+
+- The crontab is a list of commands that you want to run on a regular schedule, and also the name of the command used to manage that list. Crontab stands for 
+  “cron table, ” because it uses the job scheduler cron to execute tasks.
+  
+- Linux Crontab Format - MIN HOUR DOM MON DOW CMD
+
+Field    Description    Allowed Value
+MIN      Minute field    0 to 59
+HOUR     Hour field      0 to 23
+DOM      Day of Month    1-31
+MON      Month field     1-12
+DOW      Day Of Week     0-6
+CMD      Command         Any command to be executed.
+
+- 30 08 10 06 * /home/maverick/full-backup => initiate full backup 
+- use crontab -l to see cron entries
+
+- Cron is a task scheduler to initiate the running of a task at a specified time or frequency. A cron job runs regularly, such as once per minute, hour, day,
+  week, or month. A batch job runs one or more times, but not regularly. Cron jobs are also batch jobs, but think of a cron job as a batch job that runs regularly.
+- Cron job is a time managed one line script. A batch job is a script that runs.
+- A batch job is just work that depends on other things. Like calculate salary, put money into the bank accounts of employees, pay the taxes and update the 
+  database. Or take backups, send them to your storage, though that could be considered a script.
+
