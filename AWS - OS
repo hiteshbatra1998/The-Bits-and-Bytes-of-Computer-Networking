@@ -18,14 +18,10 @@ In Linux, there are 6 distinct stages in the typical booting process.
 2. MBR
 - MBR stands for Master Boot Record.
 - It is located in the 1st sector of the bootable disk. Typically /dev/hda, or /dev/sda
-- MBR is less than 512 bytes in size. This has three components 
-    1) primary boot loader info in 1st 446 bytes 
-    2) partition table info in next 64 bytes 
-    3) mbr validation check in last 2 bytes.
+- MBR is less than 512 bytes in size. 
 - It contains information about GRUB (or LILO in old systems).
 - So, in simple terms MBR loads and executes the GRUB boot loader.
-- The MBR is the first sector of the computer hard drive that tells the computer how to load the operating system, 
-  how the hard drive is partitioned.
+- The MBR is the first sector of the computer hard drive that tells the computer how to load the operating system, how the hard drive is partitioned.
 
 3. GRUB/ LILO (Linux Loader)
 - GRUB stands for Grand Unified Bootloader.
@@ -39,7 +35,6 @@ In Linux, there are 6 distinct stages in the typical booting process.
   The Linux® kernel is the main component of a Linux operating system (OS) and is the core interface between a computer's hardware and its processes. It 
   communicates between the 2, managing resources as efficiently as possible.
 - Mounts the root file system as specified in the “root=” in grub.conf
-- Kernel executes the /sbin/init program
 - Since init was the 1st program to be executed by Linux Kernel, it has the process id (PID) of 1.
 - initrd stands for Initial RAM Disk.
 - initrd is used by kernel as temporary root file system until kernel is booted and the real root file system is mounted. It also contains necessary drivers 
@@ -48,8 +43,7 @@ In Linux, there are 6 distinct stages in the typical booting process.
   which performs the majority of system setup (interrupts, the rest of memory management, device and driver initialization, etc.). 
   
 5. Init
-- Init is the parent of all processes, executed by the kernel during the booting of a system. Its principle role is to create processes from a script stored 
-  in the file /etc/inittab.
+- Init is the parent of all processes, executed by the kernel during the booting of a system. Its principle role is to create processes from a script.
 - Looks at the /etc/inittab file to decide the Linux run level.
 - Following are the available run levels
     0 – halt
@@ -60,7 +54,6 @@ In Linux, there are 6 distinct stages in the typical booting process.
     5 – X11
     6 – reboot
 - Init identifies the default initlevel from /etc/inittab and uses that to load all appropriate program.
-- Execute ‘grep initdefault /etc/inittab’ on your system to identify the default run level
 - Typically you would set the default run level to either 3 or 5.
 
 6. Runlevel programs
