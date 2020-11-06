@@ -137,9 +137,9 @@ Memory Management:
   unit of data for memory management in a virtual memory operating system. Similarly, a page frame is the smallest fixed-length contiguous block of physical 
   memory into which memory pages are mapped by the operating system.
 
-- In computer operating systems, paging is a memory management scheme by which a computer stores and retrieves data from secondary storage for use in main memory.
-- Paging is a memory management scheme that eliminates the need for contiguous allocation of physical memory. This scheme permits the physical address space 
-  of a process to be non – contiguous.
+- Paging is a memory management scheme that eliminates the need for contiguous allocation of physical memory. This scheme permits the physical address space of 
+  a process to be non – contiguous.
+
 - The Physical Address Space is conceptually divided into a number of fixed-size blocks, called frames.
 - The Logical address Space is also splitted into fixed-size blocks, called pages.
 - Page Size = Frame Size
