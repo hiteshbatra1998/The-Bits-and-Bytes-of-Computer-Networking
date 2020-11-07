@@ -605,6 +605,6 @@ SSL handshake:
 6. It is then finally followed by Finished message from server encrypted with the shared secret key for indicating a successful handshake from its end.
    
 
-
-
+ 1. Switch - Router : read from gfg, broadcast domain too.
+ 2. 
 
