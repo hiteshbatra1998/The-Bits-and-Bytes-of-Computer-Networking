@@ -216,13 +216,7 @@ MSS (maximum segment size) - MTU (maximum transmission unit)
 - One of the key differences between MTU and MSS is that if a packet exceeds a device's MTU, it is broken up into smaller pieces, or "fragmented." 
   In contrast, if a packet exceeds the MSS, it is dropped and not delivered.
 
-- Fragmentation is not permitted in IPv6. IPv6 is the latest version of the Internet Protocol, although IPv4 is still widely used. Routers that support IPv6 
-  will drop any IPv6 packets that exceed the MTU, because they cannot be fragmented.
-
-- Fragmentation is also not possible when the "Don't Fragment" flag is activated in a packet's IP header.
-
-- Incase of IPv4, a Internet Control Message Protocol (ICMP) message is sent back to the router along with its MTU limit, for fragmentation, to help prev router
-  to break packages and send again.
+- Fragmentation is also not possible when the "Don't Fragment" flag is activated in a packet's IP header
 
 - TCP headers are almost always 20 bytes* long. IP headers include information such as the source and destination IP address, and they are also 20 bytes long. 
   Both TCP and IP packets include optional header fields that can make the headers longer, but these are almost never used.
@@ -237,11 +231,6 @@ MSS (maximum segment size) - MTU (maximum transmission unit)
 
 - MSS is a layer 4, or transport layer, metric. It is used with TCP, a transport layer protocol. However, it is closely related to MTU, which applies to layer 3 
   (the network layer).
-
-- Occasionally, a router along a network path has an MTU value set lower than the typical 1,500 bytes. This can result in packet loss and can be difficult to 
-  discover. To ensure packets still reach their destination in this situation, one option is to reduce the size of incoming packet payloads. 
-  This can be achieved by configuring the server to apply an MSS clamp: during the TCP handshake, the server can signal the MSS for packets it is willing 
-  to receive, "clamping" the maximum payload size from the other server. 
 
 - Path MTU Discovery (PMTUD) is a standardized technique in computer networking for determining the maximum transmission unit (MTU) size on the network path 
   between two Internet Protocol (IP) hosts, usually with the goal of avoiding IP fragmentation.
