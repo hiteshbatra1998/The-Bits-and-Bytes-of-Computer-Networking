@@ -1,16 +1,3 @@
-1. Troubleshooting: I am not able to connect to the internet. I do not have a spare device with me. Troubleshoot the scenario and figure out where does the issue 
-  lie?
-Ans. Issue can lie with the device, or the network, or from the server side. This needs to be answered strategically from the most common issue raised first, 
-     to the least common possibility addressed last.
-     - Maybe it's a DNS problem : See if the website DNS name (let's say it is example.com) resolves to an IP address. You can do this by starting a console or 
-       command prompt, and typing ping example.com. If you get an "unknown host" error this means there is likely a DNS problem.
-       nslookup google.com
-     - Clear browser cache - Maybe it's a browser problem. If it does resolve in DNS, but you don't get ping replies it means they are either filtering pings 
-       or you can't reach that site.
-     - Maybe it's a problem with your internet connection : Use traceroute example.com, to see where it times out.
-       o/p - google.com: Temporary failure in name resolution
-     - Check router, reset it. Contact ISP.
-     
 D - 2. I am trying to transfer media over FTP from one device to another. The rate of transfer is very slow. Troubleshoot the scenario.
 Ans. Main issue that affects - The number of clients that currently are using the FTP service. Bandwidth allocated.
      - The first test you can do is to perform local FTP speeds. Install client and server on same network and check the speed. - FileZilla. If you have top speed, 
