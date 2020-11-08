@@ -1,0 +1,77 @@
+1. Troubleshooting: I am not able to connect to the internet. I do not have a spare device with me. Troubleshoot the scenario and figure out where does the issue 
+  lie?
+Ans. Issue can lie with the device, or the network, or from the server side. This needs to be answered strategically from the most common issue raised first, 
+     to the least common possibility addressed last.
+     - Maybe it's a DNS problem : See if the website DNS name (let's say it is example.com) resolves to an IP address. You can do this by starting a console or 
+       command prompt, and typing ping example.com. If you get an "unknown host" error this means there is likely a DNS problem.
+       nslookup google.com
+     - Clear browser cache - Maybe it's a browser problem. If it does resolve in DNS, but you don't get ping replies it means they are either filtering pings 
+       or you can't reach that site.
+     - Maybe it's a problem with your internet connection : Use traceroute example.com, to see where it times out.
+       o/p - google.com: Temporary failure in name resolution
+     - Check router, reset it. Contact ISP.
+     
+2. I am trying to transfer media over FTP from one device to another. The rate of transfer is very slow. Troubleshoot the scenario.
+Ans. Main issue that affects - The number of clients that currently are using the FTP service. Bandwidth allocated.
+     - The first test you can do is to perform local FTP speeds. Install client and server on same network and check the speed. - FileZilla. If you have top speed, 
+       that means it is not a problem with your application.
+     - Let’s Verify the Network. 
+        - Ping The Gateway. See RTT value, if greater then you are far away from gateway, could be the reason.
+        - Trace the Route Towards the Destination. - if any server is delaying it, then possible may be located far away from server.
+     - Use Wired Instead of Wireless.
+     - Check Whether you are connected to a VPN or Proxy. 
+     - Check your Antivirus. 
+        - An Antivirus is the first line of defense against Malware. But despite its many benefits, it can degrade your Internet speed and 
+          computer performance. Malware might be the No.1 reason for your slow Internet speed. 
+          
+3. My device is heating up very quickly. Troubleshoot the scenario.         
+Ans. Reason - insufficient cooling.
+      Hardware -
+     1. Fix Internal Cooling
+        The first and most important thing you need to do when your laptop is overheating is to clean the fan(s) that provide(s) cooling to the CPU and graphics
+        card. Over time, they build up layers of dust and dirt that slow them down and block airflow.
+     2. Keep The Laptop On A Hard And Flat Surface
+     3. Invest In A Laptop Cooler Or Cooling Pad.
+     
+     Software -     
+     1. You can either reduce brightness of your screen or reduce the CPU clock speed (The clock speed measures the number of cycles your CPU executes per second)..
+     2. Limit start-up apps.
+     3. Clean cache.
+     4. Using RAM consuming processes for a long time.
+     
+4. Linux Login issues - https://www.quora.com/What-are-good-ways-to-troubleshoot-login-issues-for-a-Linux-user-account
+
+5. Network Connectivity : https://www.dnsstuff.com/network-troubleshooting-steps
+
+6. PC is slow - https://www.maketecheasier.com/linux-running-too-slow-heres-how-to-find-the-cause/#:~:text=Examine%20CPU%20Information,enough%20to%20run%20heavyweight%20applications.
+
+7. Website is accessible by entering DNS but not with uri - https://community.spiceworks.com/topic/27232-why-would-a-hostname-not-resolve-but-a-ip-work-fine
+                                                            https://www.opcsupport.com/s/article/Why-can-I-communicate-using-IP-address-but-not-DNS-nameRef-KB-842
+                                                            
+8. System not able to bootup - https://www.howtogeek.com/196740/how-to-fix-an-ubuntu-system-when-it-wont-boot/#:~:text=Repair%20GRUB%20If%20You%20Can't%20Access%20It&text=Boot%20into%20the%20USB%20drive,Linux%20system%20to%20repair%20GRUB.&text=After%20repairing%20the%20GRUB%20boot,may%20just%20see%20Ubuntu%20boot.   
+
+9. How will you check system logs - https://www.fosslinux.com/8984/how-to-check-system-logs-on-linux-complete-usage-guide.htm
+                                    https://www.linux.com/topic/desktop/viewing-linux-logs-command-line/
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
