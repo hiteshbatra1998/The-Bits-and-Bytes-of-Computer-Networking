@@ -11,7 +11,7 @@ Ans. Issue can lie with the device, or the network, or from the server side. Thi
        o/p - google.com: Temporary failure in name resolution
      - Check router, reset it. Contact ISP.
      
-2. I am trying to transfer media over FTP from one device to another. The rate of transfer is very slow. Troubleshoot the scenario.
+D - 2. I am trying to transfer media over FTP from one device to another. The rate of transfer is very slow. Troubleshoot the scenario.
 Ans. Main issue that affects - The number of clients that currently are using the FTP service. Bandwidth allocated.
      - The first test you can do is to perform local FTP speeds. Install client and server on same network and check the speed. - FileZilla. If you have top speed, 
        that means it is not a problem with your application.
@@ -24,7 +24,7 @@ Ans. Main issue that affects - The number of clients that currently are using th
         - An Antivirus is the first line of defense against Malware. But despite its many benefits, it can degrade your Internet speed and 
           computer performance. Malware might be the No.1 reason for your slow Internet speed. 
           
-3. My device is heating up very quickly. Troubleshoot the scenario.         
+D - 3. My device is heating up very quickly. Troubleshoot the scenario.         
 Ans. Reason - insufficient cooling.
       Hardware -
      1. Fix Internal Cooling
@@ -39,13 +39,13 @@ Ans. Reason - insufficient cooling.
      3. Clean cache.
      4. Using RAM consuming processes for a long time.
      
-4. Linux Login issues - https://www.quora.com/What-are-good-ways-to-troubleshoot-login-issues-for-a-Linux-user-account
+D - 4. Linux Login issues - https://www.quora.com/What-are-good-ways-to-troubleshoot-login-issues-for-a-Linux-user-account
 
-5. Network Connectivity : https://www.dnsstuff.com/network-troubleshooting-steps
+D -  5. Network Connectivity : https://www.dnsstuff.com/network-troubleshooting-steps
 
 6. PC is slow - https://www.maketecheasier.com/linux-running-too-slow-heres-how-to-find-the-cause/#:~:text=Examine%20CPU%20Information,enough%20to%20run%20heavyweight%20applications.
 
-7. Website is accessible by entering DNS but not with uri - https://community.spiceworks.com/topic/27232-why-would-a-hostname-not-resolve-but-a-ip-work-fine
+D - 7. Website is accessible by entering DNS but not with uri - https://community.spiceworks.com/topic/27232-why-would-a-hostname-not-resolve-but-a-ip-work-fine
                                                             https://www.opcsupport.com/s/article/Why-can-I-communicate-using-IP-address-but-not-DNS-nameRef-KB-842
                                                             
 8. System not able to bootup - https://www.howtogeek.com/196740/how-to-fix-an-ubuntu-system-when-it-wont-boot/#:~:text=Repair%20GRUB%20If%20You%20Can't%20Access%20It&text=Boot%20into%20the%20USB%20drive,Linux%20system%20to%20repair%20GRUB.&text=After%20repairing%20the%20GRUB%20boot,may%20just%20see%20Ubuntu%20boot.   
