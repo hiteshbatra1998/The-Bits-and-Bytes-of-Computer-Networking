@@ -7,18 +7,21 @@ In Linux, there are 6 distinct stages in the typical booting process.
 
 1. BIOS - BIOS is firmware used to perform hardware initialization during the booting process, and to provide runtime services for operating systems and programs. 
           The BIOS firmware comes pre-installed on a personal computer's system board, and it is the first software to run when powered on. 
-
+          It runs from ROM.
 - BIOS stands for Basic Input/Output System
-- Performs some system integrity checks
+- Performs some system integrity checks know as POST (Power on self test). This is very brief test done on CPU , memory , and storage devices to verify all are working fine.
+  If some errors found then an error message is displayed on the screen or a number of beeps are heard. These beeps are known as POST beep codes
 - Searches, loads, and executes the boot loader program.
-- It looks for boot loader in floppy, cd-rom, or hard drive. You can press a key F12 of F2 during the BIOS startup to change the boot sequence.
+- It looks for boot loader in floppy, cd-rom, or hard drive depending on the order set. You can press a key F12 of F2 during the BIOS startup to change the boot sequence.
 - Once the boot loader program is detected and loaded into the memory, BIOS gives the control to it.
 - So, in simple terms BIOS loads and executes the MBR boot loader.  
 
 2. MBR
 - MBR stands for Master Boot Record.
 - It is located in the 1st sector of the bootable disk. Typically /dev/hda, or /dev/sda
-- MBR is less than 512 bytes in size. 
+  ( hd & sd are two different type of disks. hd is IDE integerated drive electronics & sd is SCSI small computer system interface These are set of rules which determine how to control flow of data between peropheral devices  )
+  ( partitions of hd and sd are done on the basis of alphabets or numbers like hda , hdb or hd1 ,hd2 same with sd and hda beimg first)
+- MBR is less than 512 bytes in size. (446 byte of primary boot loader, 64 byte of partition table (partition of storage device) , 2 byte of mbr validation check whether this mbr is valid or not also called magic number  )
 - It contains information about GRUB (or LILO in old systems).
 - So, in simple terms MBR loads and executes the GRUB boot loader.
 - The MBR is the first sector of the computer hard drive that tells the computer how to load the operating system, how the hard drive is partitioned.
@@ -28,27 +31,29 @@ In Linux, there are 6 distinct stages in the typical booting process.
 - If you have multiple kernel images installed on your system, you can choose which one to be executed.
 - GRUB displays a splash screen, waits for few seconds, if you don’t enter anything, it loads the default kernel image as specified in the grub configuration file.
 - GRUB has the knowledge of the filesystem (the older Linux loader LILO didn’t understand filesystem).
-- Grub configuration file is /boot/grub/grub.conf (/etc/grub.conf is a link to this). 
-- So, in simple terms GRUB just loads and executes Kernel and initrd images.
+- Grub configuration file is /boot/grub/grub.conf (/etc/grub.conf is a link to this , this file contains commands and parameter grub need to run). 
+- So, in simple terms GRUB just loads and executes Kernel and initrd images i.e 
+   (initial ramdisk - contains necessary system files need in kernel boot process and for loading temporary files in memory ) .
 
 4. Kernel
   The Linux® kernel is the main component of a Linux operating system (OS) and is the core interface between a computer's hardware and its processes. It 
-  communicates between the 2, managing resources as efficiently as possible.
-- Mounts the root file system as specified in the “root=” in grub.conf
+  communicates between the 2, managing resources as efficiently as possible.It has complete control over anything in system.
+- Mounts the root file (A root file system contains everything needed to support a full Linux system) system as specified in the “root=” in grub.conf
 - Since init was the 1st program to be executed by Linux Kernel, it has the process id (PID) of 1.
 - initrd stands for Initial RAM Disk.
 - initrd is used by kernel as temporary root file system until kernel is booted and the real root file system is mounted. It also contains necessary drivers 
   compiled inside, which helps it to access the hard drive partitions, and other hardware.
-- The kernel, if compressed (vmlinuz), will decompress itself. It then sets up system functions such as essential hardware and memory paging, and calls start_kernel() 
-  which performs the majority of system setup (interrupts, the rest of memory management, device and driver initialization, etc.). 
+- The kernel, if compressed (vmlinuz is called complressed linux kernel), will decompress itself. It then sets up system functions such as essential hardware 
+  and memory paging, and calls start_kernel() which performs the majority of system setup (interrupts, the rest of memory management, device and driver initialization, etc.). 
   
 5. Init
 - Init is the parent of all processes, executed by the kernel during the booting of a system. Its principle role is to create processes from a script.
 - Looks at the /etc/inittab file to decide the Linux run level.
+  (We can change the runlevel by editing this file or using telinit command, sudo is to be used as it is administrator cmnd)
 - Following are the available run levels
     0 – halt
     1 – Single user mode
-    2 – Multiuser, without NFS
+    2 – Multiuser, without NFS(network file system)
     3 – Full multiuser mode
     4 – unused
     5 – X11
@@ -70,7 +75,8 @@ In Linux, there are 6 distinct stages in the typical booting process.
 - Programs starts with S are used during startup. S for startup.
 - Programs starts with K are used during shutdown. K for kill.    
 - A runlevel in other words can be defined as a preset single digit integer for defining the operating state of your LINUX or UNIX-based operating system. 
-  Each runlevel designates a different system configuration and allows access to different combination of processes.  
+  Each runlevel designates a different system configuration and allows access to different combination of processes. 
+  sudo telinit 5 command is used to change the runlevel. We can specify any run level.
   
  ** Unified Extensible Firmware Interface (UEFI) replaces BIOS.
     UEFI is packed with other features. It supports Secure Boot, which means the operating system can be checked for validity to ensure no malware has tampered 
