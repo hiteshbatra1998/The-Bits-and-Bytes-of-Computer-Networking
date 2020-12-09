@@ -129,6 +129,8 @@ Each layer is needed for the one above it;
 -> This class system has been replaced by CIDR (Classless inter-domain routing);
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Subnet Mask of IP address -> Set all bits of network bit to 1 and host bit to 0.
+
 Class A -:
         IP address belonging to class A are assigned to the networks that contain a large number of hosts.
         
@@ -183,7 +185,7 @@ Class E -:
 
 * Because of wastage of number of ip addresses in Classful addressing, we introduced Classless Inter Domain Routing (CIDR), to solve the issue.
   CIDR - https://www.youtube.com/watch?v=N-ywmOpWehE&list=PLxCzCOWd7aiGFBD2-2joCpWOLUrDLvVV_&index=36
-  Format - w.x.y.z/n ( n = mask, number of consec 1's ). Things we can figure out - Number of hosts, Subnet mask, Network Id.
+  Format - w.x.y.z/n ( n = mask/number of bits representing block id/network id, number of consec 1's ). Things we can figure out - Number of hosts, Subnet mask, Network Id.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 * Address Resolution Protocol (ARP)
