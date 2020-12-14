@@ -50,6 +50,7 @@
   
   * CIDR - Classless Inter-Domain Routing
 -------------------------------------------
+https://www.youtube.com/watch?v=wvvoT-dpr8o&list=PLxCzCOWd7aiGFBD2-2joCpWOLUrDLvVV_&index=39
 -> Address classes were the first attempt at splitting the global Internet IP space;
 -> Subnets were address when the address classes weren't an efficient way of keeping everything organized;
 - CIDR - flexible approach to describe blocks of IP addresses - it expands on the concepts of subnetting by using subnet masks to demarcate networks;
