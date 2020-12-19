@@ -46,7 +46,7 @@ Allows these applications to communicate in a way they can understand;
  Likewise the default for HTTP is 80, which is used to identify packets for transfer to the web server.
  
  Ports - 
- *20 - File Transfer Protocol (FTP) Data Transfer
+ *20 - File Transfer Protocol (FTP) (21) Data Transfer
  22	- Secure Shell (SSH) Secure Login
  *25	Simple Mail Transfer Protocol (SMTP) E-mail routing
  *53	- Domain Name System (DNS) service
