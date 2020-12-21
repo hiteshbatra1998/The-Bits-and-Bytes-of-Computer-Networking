@@ -76,6 +76,8 @@ Networking
 https://www.geeksforgeeks.org/network-devices-hub-repeater-bridge-switch-router-gateways/
 https://www.geeksforgeeks.org/difference-between-layer-2-and-layer-3-switches/
 geeksforgeeks.org/difference-between-router-and-layer-3-switch/
+https://www.geeksforgeeks.org/difference-between-router-and-gateway/
+types of bridge - https://www.youtube.com/watch?v=dDP36_ZBs6A ( transparent / dynamic -> Forwarding and learning , Source Routinng/Static -> Have predefined table  )
 
 1. Cables - Connect different devices to each other allowing data to be transmitted over them; 
  - 2 types - Copper or fiber, binary data value is sent through these copper cables by changing the voltage and the system at the receiving end is able to interpret these voltage canges and the binary data;
