@@ -7,7 +7,7 @@
     For CSMA/CD to work, we need a particular frame size. Before sending the last bit of the frame, the sending station must detect a collision, if any, and abort the transmission because the station, 
     once the entire frame is sent, does not keep a copy of the frame and does not monitor the channel for collision detection
     Read this (https://www.geeksforgeeks.org/data-link-layer-in-osi-model/)
-    So, the frame transmission delay (Size of frame / Bandwidth) must be at least two times the maximum propagation delay (L/P L- largest distance between nodes and P is propogation speed).
+    So, the frame transmission delay ( amount of time required to push all the packet's bits into the wire Size of frame / Bandwidth) must be at least two times the maximum propagation delay (Time taken by the first bit to travel from sender to receiver end of the link L/P L- largest distance between nodes and P is propogation speed).
     (Bandwidth is tranmission speed)
 -> CSMA/CD - Used to determine when the coomunication is clear and when a device is free to transmit data;
     - If there is no data being transmitted on the network segment, a node will feel free to send the data;
