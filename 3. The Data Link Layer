@@ -27,6 +27,7 @@ In this communication, no physical medium is present for Data Link Layer to tran
 It can be only be visualized and imagined that two Data Link Layers are communicating with each other with the help of or using data link protocol.
 
 The Data link layer generally provides or offers three types of services as given below : https://www.geeksforgeeks.org/services-provided-by-data-link-layer/
+Dont know the meaning of connectionless services here but in networdking connectionless generally means UDP (transport layer).
 1. Unacknowledged Connectionless Service
 2. Acknowledged Connectionless Service
 3. Acknowledged Connection-Oriented Service
