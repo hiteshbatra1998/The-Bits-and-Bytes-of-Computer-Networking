@@ -2,12 +2,36 @@
 ------------------------------
 -> Ethernet - The protocol most widely used to send data scross individual networks;
 -> Ethernet and the data link layer allow software at the higher level stack to send and receive data;
--> Ethernet solved the problem with collison domain by - carrier sense multiple access with collision domain - CSMA/CD;
+-> Ethernet solved the problem with collison by - carrier sense multiple access with collision detection - CSMA/CD; 
+    The CSMA method does not tells us what to do in case there is a collision. Carrier sense multiple access with collision detection (CSMA/CD) adds on to the CSMA algorithm to deal with collision. 
+    For CSMA/CD to work, we need a particular frame size. Before sending the last bit of the frame, the sending station must detect a collision, if any, and abort the transmission because the station, 
+    once the entire frame is sent, does not keep a copy of the frame and does not monitor the channel for collision detection
+    Read this (https://www.geeksforgeeks.org/data-link-layer-in-osi-model/)
+    So, the frame transmission delay (Size of frame / Bandwidth) must be at least two times the maximum propagation delay (L/P L- largest distance between nodes and P is propogation speed).
+    (Bandwidth is tranmission speed)
 -> CSMA/CD - Used to determine when the coomunication is clear and when a device is free to transmit data;
     - If there is no data being transmitted on the network segment, a node will feel free to send the data;
     - If two or more computers end up trying to send data at the same time the computers detect the collision and stop sending the data;
     - Each device involved with the collision then waits a random interval of time before trying to send data again;
     - This random interval prevents the data from computers from colliding again;
+    
+-------------------------------------------------------------------------------------------------------   
+ The main aim of Data Link Layer is to transmit data frames they have received to destination machine so that these data frames can be handed over to network layer of destination machine. 
+ At the network layer, these data frames are basically addressed and routed.
+ 1. Actual Communication :
+In this communication, physical medium is present through which Data Link Layer simply transmits data frames. 
+The actual path is Network Layer -> Data link layer -> Physical Layer on sending machine, then to physical media and after that to Physical Layer -> Data link layer -> Network Layer on receiving machine.
+
+2. Virtual Communication :
+In this communication, no physical medium is present for Data Link Layer to transmit data. 
+It can be only be visualized and imagined that two Data Link Layers are communicating with each other with the help of or using data link protocol.
+
+The Data link layer generally provides or offers three types of services as given below : https://www.geeksforgeeks.org/services-provided-by-data-link-layer/
+1. Unacknowledged Connectionless Service
+2. Acknowledged Connectionless Service
+3. Acknowledged Connection-Oriented Service
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
   * MAC address (Media Access Controll Address)
   --------------------------------------------------
