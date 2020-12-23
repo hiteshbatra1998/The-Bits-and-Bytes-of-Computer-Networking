@@ -206,6 +206,16 @@ Class E -:
 -> ARP cache : the arp table maintained by the sender in order to have hassle free communication in future. Gets deleted over time.
 -> Check by | arp -a |. 2 types - Dynamic: Changes over time, Static: Manually entered to relate IP to MAC, if communication has to be done frequently.
 
+The important terms associated with ARP are : 
+ARP Cache: After resolving MAC address, the ARP sends it to the source where it stores in a table for future reference. The subsequent communications can use the MAC address from the table
+ARP Cache Timeout: It indicates the time for which the MAC address in the ARP cache can reside
+ARP request: This is nothing but broadcasting a packet over the network to validate whether we came across destination MAC address or not. 
+ -The physical address of the sender. 
+ -The IP address of the sender.
+ -The physical address of the receiver is FF:FF:FF:FF:FF:FF or 1’s.
+ -The IP address of the receiver
+ARP response/reply: It is the MAC address response that the source receives from the destination which aids in further communication of the data.
+
 CASE-1: The sender is a host and wants to send a packet to another host on the same network.
         Use ARP to find another host’s physical address.
         
