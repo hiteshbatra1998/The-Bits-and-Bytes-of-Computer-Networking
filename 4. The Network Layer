@@ -194,7 +194,7 @@ Class E -:
 -> MAC Addresses are used at the Data-link Layer.
 -> IP addresses are used at the Network Layer.
 -> ARP - A protocol used to discover the hardware address of a node with certain IP address in order to communicate;
--> Most network connected devices retain local ARP table;
+-> Most network connected devices retain local ARP table; The ARP table is stored in the RAM of the device
 -> ARP table - A list of IP Addresses and the MAC addresses associated with them;
 
 -> The IP datagram once fully formed needs to be encapsulated inside an Ethernet frame, hence the transmitting device needs a destination MAC address to complete the Ethernet frame header;
