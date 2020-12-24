@@ -7,12 +7,19 @@
     - The Core routers route the message to the Gateway router responsible for the network by looking at the network ID;
     - Once the packet gets to the gateway router 9.0.0.0 Class A network, the router is responsible for getting it to the proper system by looking at the host id;
     - But a Class A address - consists of 16 Million hosts (Just too many devices to connect to the same router) -  That when subnetting comes in - each 
-      individual
-      subnet will have its own gateway routers serving as an ingress and egress point for each subnet.
+      individual subnet will have its own gateway routers serving as an ingress and egress point for each subnet.
     
  -> A Gateway router specifically serves as the entry and exit path to a certain network;
  -> On the otherhand core internet routers communicate with only other core internet routers;
+  ****
+  When we divde a network in subnets and the broadcast address of last subnet and network id of first subnet is same as that of network. But we have done this internally and out side req is handeled according to network id and inside it we can change the broadcast address of different subnets.
+  *****
+  Advantage -> Management , Security .
+  Disadvantage of subnet -> The number of steps to reach a host is increased i.e. Netword ID -> Subnet Id -> Host Id -> Port number.
+  Whithoud subneting - > Netword ID -> Host Id -> Port number
   
+  
+  Total number of usabl hosts after subnetting (excluding subnet id and broadcast id of subnet) = total number of host in the network without subnetting ( including broadcast and netowrk ) -  (2* number of subnets)
  * Subnet Masks
 ----------------
 - Network ID's are used to identify networks and Host ID's are used to identify individual hosts;
