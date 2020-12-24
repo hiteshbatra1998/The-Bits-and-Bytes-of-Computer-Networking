@@ -18,7 +18,7 @@
   Disadvantage of subnet -> The number of steps to reach a host is increased i.e. Netword ID -> Subnet Id -> Host Id -> Port number.
   Whithoud subneting - > Netword ID -> Host Id -> Port number
   
-  
+  In classfull addressing -
   Total number of usabl hosts after subnetting (excluding subnet id and broadcast id of subnet) = total number of host in the network without subnetting ( including broadcast and netowrk ) -  (2* number of subnets)
  * Subnet Masks
 ----------------
