@@ -123,7 +123,7 @@ destination - 10.1.1.100                                                       d
 source port - 51300                                                            source port - 51300
 
 - The source port in the TCP datagram remains the same, and the data is stored internally in a table; Then the traffic is forwarded back to the IP 10.1.1.100 on source port - 51300;
-- Incase two computers on a network use the same port then the router normally selects an used port at random instead;
+- Incase two computers on a network use the same port then the router normally selects an unused port at random instead;
 
 * Port Forwarding -> A technique where specific destination ports can be configured to always be delievered to specific nodes;
 - This allows for IP masquerading; 
