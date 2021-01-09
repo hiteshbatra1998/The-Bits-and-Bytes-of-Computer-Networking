@@ -98,7 +98,7 @@ DHCP - can be used to configured a lot of things - IP Addresses, Gateways, NTP (
 - IP conflict can occur
 ---------------------------------------------------------------------------------------------------------------------------------
 
-NAT - Network Address Translation
+NAT - Network Address Translation https://www.geeksforgeeks.org/network-address-translation-nat/
 -----------------------------------
 - It is a technique not a standard like - DNS, DHCP, etc;
 - NAT could be OS and hardware dependent;
