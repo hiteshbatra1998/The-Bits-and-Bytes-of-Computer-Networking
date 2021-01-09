@@ -116,6 +116,8 @@ Allows these applications to communicate in a way they can understand;
     It is used to acknowledge packets which are successful received by the host. The flag is set if the acknowledgement number field contains a valid acknowledgement number.
 3. PSH -> push - The transmitting device wants the receiving device to push currently-buffered data to the application on the receiving end as soon as possible.
    (A buffer is a computing technique where a certain amount of data is held somewhere, before being sent elsewhere  -  used to send large chunks of data more efficiently);
+   NOTE *The PSH flag in the TCP header informs the receiving host that the data should be pushed up to the receiving application immediately.* 
+         *The URG flag is used to inform a receiving station that certain data within a segment is urgent and should be prioritized.*
 4. RST - Reset - One of the sides in a TCP connection has not been able to properly recover from a series of missing or malformed segments;
 5. SYN (synchronize) - It's used when first establishing a TCP connection and makes sure the receiving end knows to examine the sequence number field;
    This is used for synchronizing sequence number i.e. to tell the other end which sequence number they should except. First packet from both sender's and receiver's end.
