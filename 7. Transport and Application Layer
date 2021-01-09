@@ -138,6 +138,9 @@ A                     B
    <----SYN/ACK-------
    -------ACK--------->
    
+   Q -> What happen if last ACK is lost?
+   Ans -> Either SYN/ACK from B is sended again or in the upcomming packet the ACK bit will be set 1 and thus connection can be made.
+   
 Since bothe A and B are able to exchange data - TCP connection at this state is operating in full DUPLEX;
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
