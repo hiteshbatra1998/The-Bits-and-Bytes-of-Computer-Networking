@@ -316,6 +316,8 @@ Drop : block the traffic with no reply
                                
 - Firewalls can be categorized based on its generation.
 
+https://www.geeksforgeeks.org/introduction-of-firewall-in-computer-network/  - study from here.
+
      First Generation - Packet Filtering Firewall :  Packet filtering firewall is used to control network access by monitoring outgoing and incoming packet and 
                         allowing them to pass or stop based on source and destination IP address, protocols and ports. 
                         Packet firewalls treat each packet in isolation. They have no ability to tell whether a packet is part of an existing stream of traffic. 
