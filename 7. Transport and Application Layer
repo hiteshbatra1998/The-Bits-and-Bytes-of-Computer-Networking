@@ -123,6 +123,9 @@ Allows these applications to communicate in a way they can understand;
    This is used for synchronizing sequence number i.e. to tell the other end which sequence number they should except. First packet from both sender's and receiver's end.
 6. FIN (finish) - When this flag is set to one, it means the transmitting computer does not have any more data to send and the connection can be closed.
    This is the last packet sent by sender. It frees the reserved resources and gracefully terminate the connection.
+   
+   Q) Difference between PSH and URG?
+   Ans ) https://community.checkpoint.com/t5/Off-Topic/TCP-push-vs-urgent-flag/td-p/80840
 
 * Example of how a TCP control flags are used and connections are set:
 ----------------------------------------------------------------------
