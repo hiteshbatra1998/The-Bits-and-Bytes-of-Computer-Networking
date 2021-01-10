@@ -251,6 +251,8 @@ UDP  - Though Transmission Control Protocol (TCP) is the dominant transport laye
 - TCP is heavy-weight.	UDP is lightweight.
 
 - TCP doesn’t supports Broadcasting.	UDP supports Broadcasting.
+
+NOTE UDP uses no handshake protocols.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 *********************************
