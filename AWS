@@ -594,7 +594,23 @@ NOTE :- In OSI model SSL help in exchanging data of application layer thus appli
 4. Client also needs to send Shared secret key (secret key is encrypted with server's public key) indicating that it is switching to secure communication now.
 5. It is then followed by Finished message by client encrypted with the shared secret key for indicating a successful handshake.
 6. It is then finally followed by Finished message from server encrypted with the shared secret key for indicating a successful handshake from its end.
-   
+
+SSL- https://www.youtube.com/watch?v=SXErMCgrT0o
+SSL handhake - https://www.youtube.com/watch?v=Nh5jdNxPL7g        https://medium.com/@kasunpdh/ssl-handshake-explained-4dabb87cdce
+SSL Record protocol - https://www.youtube.com/watch?v=bm8mB8zYST0
+SSL Alert protocol - https://www.youtube.com/watch?v=yeiU5SRSBjU
+
+Cipher spec vs Cipher suite(set to crypto algo supported by entity or client/server)
+In cryptography, a cipher (or cypher) is an algorithm for performing encryption or decryption
+
+Q) in Phase 4 of handshake whether change cipher spec is sent or cipher suite is sended?
+Ans -> Mostly it is written change cipher spec but on gfg it is cipher suite.
+
+SSL vs TLS - https://kinsta.com/knowledgebase/tls-vs-ssl/#what          https://www.ssl2buy.com/wiki/ssl-vs-tls
+	1) In SSL the "No Certificate" allert message is there whereas in TLS it is replaced with other alert messages.
+	2) Cipher Suites - SSL offer Fortezza whereas TLS offers RC4, Triple DES, AES, IDEA,
+	3) SSL used Message Authentication code (MAC) whereas TLS uses H-MAC Hash based message authentication code.
+	4) In SSL, the hash calculation also comprises the master secret and pad while in TLS, the hashes are calculated over handshake message
 
  1. Switch - Router : read from gfg, broadcast domain too.
  2. DHCP - gfg - It stands for Dynamic Host Configuration Protocol (DHCP).It gives IP addresses to hosts.There is a lot of information a DHCP server can 
