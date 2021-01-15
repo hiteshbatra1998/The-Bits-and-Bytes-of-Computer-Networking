@@ -563,6 +563,8 @@ Steps:
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 ******
 SSL handshake:
+
+NOTE :- In OSI model SSL help in exchanging data of application layer thus application layer protocol , It encrypt and decrypt data thus presentation layer protocol , It establish end point session or connection thus session layer protocol. We can say it works on all three layers. In TCP/IP we can say it work on application layer. OSI is just a model to understand flow of data with more presicion. 
 - SSL stands for Secure Sockets Layer. It’s a protocol used to encrypt and authenticate the data sent between an application (like your browser) and a web server.
   This leads to a more secure web for both you and the visitors to your website. SSL is closely tied to another acronym – TLS. TLS, short for Transport Layer 
   Security, is the successor and more up-to-date version of the original SSL protocol.
