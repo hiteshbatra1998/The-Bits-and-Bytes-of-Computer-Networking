@@ -39,6 +39,10 @@ DNS:
  1. Caching name servers - Purpose is to store known domain name lookups for a certain amount of time;
  2. Recursive name servers - Purpose is to store known domain name lookups for a certain amount of time; Perform full DNS reolution requests;
  3. Root name servers
+ Q) Why 13 root name servers are there?
+ Ans ) It’s because of the limitations of the original DNS infrastructure, which used only IPv4¹ containing 32 bytes. 
+      The IP addresses needed to fit into a single packet, which was limited to 512 bytes at that time. 
+      So, each of the IPv4 addresses is 32 bits, and 13 of them come to 416 bytes (32*13), leaving the remaining 96 bytes for protocol information.
  4. TLD name servers
  5. Authoritative name servers
  
